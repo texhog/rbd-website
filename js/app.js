@@ -269,24 +269,30 @@ function initScoringTable() {
 
 function calculateTotals() {
     let teamTotal = 0;
-    
+
+    // Calculate total from checked goals
+    const checkedGoals = document.querySelectorAll('.goal-checkbox:checked');
+    const goalsTotal = checkedGoals.length * 6;
+
     for (let row = 1; row <= 4; row++) {
         const level1 = parseInt(document.querySelector(`.level1-pts[data-row="${row}"]`)?.value) || 0;
         const level2 = parseInt(document.querySelector(`.level2-pts[data-row="${row}"]`)?.value) || 0;
         const level3 = parseInt(document.querySelector(`.level3-pts[data-row="${row}"]`)?.value) || 0;
-        const goals = parseInt(document.querySelector(`.goals-pts[data-row="${row}"]`)?.value) || 0;
-        
-        const rowTotal = level1 + level2 + level3 + goals;
+
+        const rowTotal = level1 + level2 + level3;
         
         const rowTotalEl = document.querySelector(`.row-total[data-row="${row}"]`);
         if (rowTotalEl) rowTotalEl.textContent = rowTotal;
         
         teamTotal += rowTotal;
     }
-    
+
+    // Add goals to team total
+    teamTotal += goalsTotal;
+
     const teamTotalEl = document.getElementById('teamTotal');
     if (teamTotalEl) teamTotalEl.textContent = teamTotal;
-    
+
     updateWinLossAuto();
 }
 
@@ -313,11 +319,13 @@ function updateWinLossAuto() {
 // Goal card checkboxes
 function initGoalCards() {
     const checkboxes = document.querySelectorAll('.goal-checkbox');
-    
+
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
             const card = this.closest('.score-goal-card');
             card.classList.toggle('achieved', this.checked);
+            // Recalculate totals when goals are checked/unchecked
+            calculateTotals();
         });
     });
 }
