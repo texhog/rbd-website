@@ -99,8 +99,12 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
 .hero-title-accent { color: var(--color-coral); }
 .hero-subtitle { font-size: 1.5rem; color: var(--color-coral); font-weight: 600; margin-bottom: var(--spacing-lg); }
 .hero-description { font-size: 1.125rem; color: var(--color-white); margin-bottom: var(--spacing-xl); line-height: 1.7; }
-.hero-actions { display: flex; flex-direction: column; gap: var(--spacing-md); justify-content: center; }
+.hero-actions { display: flex; flex-direction: column; gap: var(--spacing-md); justify-content: center; margin-top: var(--spacing-2xl); }
 @media (min-width: 768px) { .hero-title { font-size: 4.5rem; } .hero-actions { flex-direction: row; } }
+
+.btn-hero { font-size: 1.25rem; padding: var(--spacing-lg) var(--spacing-2xl); font-weight: 700; box-shadow: var(--shadow-xl); transition: all var(--transition-fast); }
+.btn-hero:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.btn-hero svg { width: 24px; height: 24px; }
 
 /* Tokens Section */
 .tokens-section { padding: var(--spacing-3xl) 0; background: var(--color-gray-50); }
@@ -179,7 +183,9 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
 
 .page-header { background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-dark) 100%); padding: calc(70px + var(--spacing-2xl)) 0 var(--spacing-2xl); text-align: center; }
 .page-header h1 { color: var(--color-white); margin-bottom: var(--spacing-sm); }
-.page-header p { color: var(--color-gray-300); font-size: 1.125rem; }
+.page-header p { color: var(--color-gray-300); font-size: 1.125rem; margin-bottom: var(--spacing-xl); }
+.page-header-actions { display: flex; flex-direction: column; gap: var(--spacing-md); justify-content: center; margin-top: var(--spacing-2xl); max-width: 900px; margin-left: auto; margin-right: auto; }
+@media (min-width: 768px) { .page-header-actions { flex-direction: row; } }
 
 .search-section { padding: var(--spacing-xl) 0; background: var(--color-gray-50); border-bottom: 1px solid var(--color-gray-200); position: sticky; top: 70px; z-index: 100; }
 .search-container { max-width: 600px; margin: 0 auto; position: relative; }
