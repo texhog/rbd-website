@@ -219,23 +219,32 @@ function initTabs() {
 // Target calculation
 function initTargetCalculation() {
     const baseTarget = document.getElementById('baseTarget');
-    const minorHazards = document.getElementById('minorHazards');
-    const majorHazards = document.getElementById('majorHazards');
     const finalTarget = document.getElementById('finalTarget');
-    
+    const hazardSelects = document.querySelectorAll('.hazard-select');
+
     function calculateTarget() {
         const base = parseInt(baseTarget.value) || 56;
-        const minor = parseInt(minorHazards.value) || 0;
-        const major = parseInt(majorHazards.value) || 0;
-        
-        const total = base + (minor * 2) + (major * 5);
+        let totalModifier = 0;
+
+        // Sum up all hazard modifiers from dropdowns
+        hazardSelects.forEach(select => {
+            const value = parseInt(select.value) || 0;
+            totalModifier += value;
+        });
+
+        const total = base + totalModifier;
         finalTarget.value = total;
-        
+
         updateWinLossAuto();
     }
-    
-    if (minorHazards) minorHazards.addEventListener('input', calculateTarget);
-    if (majorHazards) majorHazards.addEventListener('input', calculateTarget);
+
+    // Add event listeners to all hazard dropdowns
+    hazardSelects.forEach(select => {
+        select.addEventListener('change', calculateTarget);
+    });
+
+    // Initial calculation
+    calculateTarget();
 }
 
 // Scoring table calculations
