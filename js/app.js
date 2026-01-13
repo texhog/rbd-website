@@ -223,31 +223,22 @@ function initTargetCalculation() {
     const targetBreakdown = document.getElementById('targetBreakdown');
     const hazardSelects = document.querySelectorAll('.hazard-select');
 
-    console.log('initTargetCalculation - Found elements:', {
-        baseTarget: !!baseTarget,
-        finalTarget: !!finalTarget,
-        targetBreakdown: !!targetBreakdown,
-        hazardSelectsCount: hazardSelects.length
-    });
-
     function calculateTarget() {
-        console.log('calculateTarget() called');
         const base = parseInt(baseTarget.value) || 56;
         let totalModifier = 0;
 
         // Sum up all hazard modifiers from dropdowns
         hazardSelects.forEach(select => {
             const value = parseInt(select.value) || 0;
-            console.log(`Hazard ${select.dataset.hazard}: ${value}`);
             totalModifier += value;
         });
 
         const total = base + totalModifier;
+        console.log(`Target calculation: Base(${base}) + Hazards(${totalModifier}) = ${total}`);
 
         // Update final target (now a span, not an input)
         if (finalTarget) {
             finalTarget.textContent = total;
-            console.log('Updated finalTarget to:', total);
             // Add pulse effect
             finalTarget.style.transform = 'scale(1.1)';
             setTimeout(() => {
@@ -255,19 +246,14 @@ function initTargetCalculation() {
             }, 300);
         }
 
-        console.log(`Calculation: ${base} + ${totalModifier} = ${total}`);
-
         // Update breakdown display with animation
         if (targetBreakdown) {
             targetBreakdown.textContent = `${base} + ${totalModifier} =`;
-            console.log('Updated targetBreakdown.textContent to:', targetBreakdown.textContent);
             // Add pulse effect
             targetBreakdown.style.transform = 'scale(1.1)';
             setTimeout(() => {
                 targetBreakdown.style.transform = 'scale(1)';
             }, 300);
-        } else {
-            console.error('targetBreakdown element not found!');
         }
 
         updateWinLossAuto();
@@ -298,10 +284,12 @@ function initScoringTable() {
 
 function calculateTotals() {
     let teamTotal = 0;
+    let projectTotal = 0;
 
     // Calculate total from checked goals
     const checkedGoals = document.querySelectorAll('.goal-checkbox:checked');
     const goalsTotal = checkedGoals.length * 6;
+    console.log('Goals calculation:', checkedGoals.length, 'goals ×', 6, '=', goalsTotal, 'points');
 
     for (let row = 1; row <= 4; row++) {
         const level1 = parseInt(document.querySelector(`.level1-pts[data-row="${row}"]`)?.value) || 0;
@@ -309,15 +297,17 @@ function calculateTotals() {
         const level3 = parseInt(document.querySelector(`.level3-pts[data-row="${row}"]`)?.value) || 0;
 
         const rowTotal = level1 + level2 + level3;
-        
+        console.log(`Row ${row}: L1(${level1}) + L2(${level2}) + L3(${level3}) = ${rowTotal}`);
+
         const rowTotalEl = document.querySelector(`.row-total[data-row="${row}"]`);
         if (rowTotalEl) rowTotalEl.textContent = rowTotal;
-        
-        teamTotal += rowTotal;
+
+        projectTotal += rowTotal;
     }
 
     // Add goals to team total
-    teamTotal += goalsTotal;
+    teamTotal = projectTotal + goalsTotal;
+    console.log('Final calculation: Projects(', projectTotal, ') + Goals(', goalsTotal, ') =', teamTotal);
 
     const teamTotalEl = document.getElementById('teamTotal');
     if (teamTotalEl) teamTotalEl.textContent = teamTotal;
