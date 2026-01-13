@@ -29,7 +29,7 @@ CREATE TABLE scores (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     display_name TEXT,
     team_score INTEGER NOT NULL,
-    target_score INTEGER NOT NULL DEFAULT 50,
+    target_score INTEGER NOT NULL DEFAULT 56,
     is_win BOOLEAN DEFAULT FALSE,
     goals_achieved INTEGER DEFAULT 0,
     roles_played TEXT[] DEFAULT '{}'
