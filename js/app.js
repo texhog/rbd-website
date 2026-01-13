@@ -236,9 +236,22 @@ function initTargetCalculation() {
         const total = base + totalModifier;
         finalTarget.value = total;
 
-        // Update breakdown display
+        // Update breakdown display with animation
         if (targetBreakdown) {
             targetBreakdown.textContent = `${base} + ${totalModifier} =`;
+            // Add pulse effect
+            targetBreakdown.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                targetBreakdown.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        // Also pulse the final target
+        if (finalTarget) {
+            finalTarget.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                finalTarget.style.transform = 'scale(1)';
+            }, 300);
         }
 
         updateWinLossAuto();
