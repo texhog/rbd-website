@@ -510,6 +510,16 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
     color: var(--color-gray-600);
 }
 
+.card-examples-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl); margin: var(--spacing-xl) 0; }
+.card-example { background: var(--color-gray-50); padding: var(--spacing-lg); border-radius: var(--radius-lg); border: 2px solid var(--color-gray-200); }
+.card-example h5 { margin-top: 0; margin-bottom: var(--spacing-md); color: var(--color-navy); font-size: 1.125rem; text-align: center; }
+.card-example-img { width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); margin-bottom: var(--spacing-md); background: white; }
+.card-example-note { font-size: 0.875rem; color: var(--color-gray-600); line-height: 1.5; margin: 0; }
+
+.scoring-reminder-box { background: #FEF3C7; border-left: 4px solid #F59E0B; padding: var(--spacing-lg); margin: var(--spacing-xl) 0; border-radius: var(--radius-md); }
+.scoring-reminder-box h5 { margin-top: 0; margin-bottom: var(--spacing-sm); color: #92400E; }
+.scoring-reminder-box p { margin: 0; color: #78350F; line-height: 1.6; }
+
 /* =====================================================
    HERO WITH BACKGROUND IMAGE
    ===================================================== */
