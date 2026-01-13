@@ -44,10 +44,48 @@ rbd-website/
 │   └── styles.css      # All styles
 ├── js/
 │   └── app.js          # All functionality
-├── images/             # (Add game photos here)
+├── images/
+│   ├── tokens/
+│   │   ├── volunteers.png
+│   │   ├── knowledge.png
+│   │   ├── funding.png
+│   │   ├── materials.png
+│   │   ├── political-will.png
+│   │   └── wild-aid.png
+│   ├── cards/
+│   │   ├── level1/
+│   │   │   ├── volunteers-project.jpg
+│   │   │   ├── knowledge-project.jpg
+│   │   │   ├── funding-project.jpg
+│   │   │   ├── materials-project.jpg
+│   │   │   └── political-will-project.jpg
+│   │   ├── level2/
+│   │   │   └── (same structure as level1)
+│   │   └── level3/
+│   │       └── (same structure as level1)
+│   └── backs/
+│       ├── level1-back.jpg
+│       ├── level2-back.jpg
+│       └── level3-back.jpg
 ├── SETUP.md            # Supabase database setup
 └── README.md           # This file
 ```
+
+## Adding More Images
+
+You can add more images to enhance the website:
+
+### Recommended additions:
+- `images/logo.png` - Game logo
+- `images/game-setup.jpg` - Photo of full table setup
+- `images/player-mats/` - Photos of each player mat
+- `images/workshop-photos/` - Photos from actual workshops
+
+### Image Best Practices:
+1. **Compress images** using TinyPNG, ImageOptim, or Squoosh
+2. **Aim for under 500KB** per image
+3. **Use descriptive filenames** like `game-board-setup.jpg` not `IMG_1234.jpg`
+4. **Optimize dimensions** - most images don't need to be larger than 1200px wide
 
 ## Setting Up the Leaderboard Database
 
