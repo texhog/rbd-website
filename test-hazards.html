@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Hazards</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .hazard-row { margin: 10px 0; }
+        select { margin: 0 10px; padding: 5px; }
+        #targetBreakdown { color: red; font-weight: bold; margin: 0 10px; }
+        #finalTarget { padding: 5px; font-size: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Hazard Calculation Test</h1>
+
+    <div class="hazard-row">
+        <label>Wildfire:</label>
+        <select class="hazard-select">
+            <option value="0">None</option>
+            <option value="2">Minor (+2)</option>
+            <option value="5">Major (+5)</option>
+        </select>
+    </div>
+
+    <div class="hazard-row">
+        <label>Flood:</label>
+        <select class="hazard-select">
+            <option value="0">None</option>
+            <option value="2">Minor (+2)</option>
+            <option value="5">Major (+5)</option>
+        </select>
+    </div>
+
+    <div class="hazard-row">
+        <label>Extreme Cold:</label>
+        <select class="hazard-select">
+            <option value="0">None</option>
+            <option value="2">Minor (+2)</option>
+            <option value="5">Major (+5)</option>
+        </select>
+    </div>
+
+    <div style="margin-top: 20px; padding: 20px; background: #f0f0f0;">
+        <strong>Final Target:</strong>
+        <span id="targetBreakdown">56 + 0 =</span>
+        <input type="number" id="finalTarget" value="56" readonly>
+    </div>
+
+    <script>
+        const hazardSelects = document.querySelectorAll('.hazard-select');
+        const targetBreakdown = document.getElementById('targetBreakdown');
+        const finalTarget = document.getElementById('finalTarget');
+
+        function calculateTarget() {
+            const base = 56;
+            let totalModifier = 0;
+
+            console.log('Calculating target...');
+
+            hazardSelects.forEach(select => {
+                const value = parseInt(select.value) || 0;
+                console.log('Hazard value:', value);
+                totalModifier += value;
+            });
+
+            const total = base + totalModifier;
+            finalTarget.value = total;
+            targetBreakdown.textContent = `${base} + ${totalModifier} =`;
+
+            console.log('Base:', base, 'Modifier:', totalModifier, 'Total:', total);
+        }
+
+        hazardSelects.forEach(select => {
+            select.addEventListener('change', calculateTarget);
+        });
+
+        calculateTarget();
+    </script>
+</body>
+</html>

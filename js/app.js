@@ -223,27 +223,41 @@ function initTargetCalculation() {
     const targetBreakdown = document.getElementById('targetBreakdown');
     const hazardSelects = document.querySelectorAll('.hazard-select');
 
+    console.log('initTargetCalculation - Found elements:', {
+        baseTarget: !!baseTarget,
+        finalTarget: !!finalTarget,
+        targetBreakdown: !!targetBreakdown,
+        hazardSelectsCount: hazardSelects.length
+    });
+
     function calculateTarget() {
+        console.log('calculateTarget() called');
         const base = parseInt(baseTarget.value) || 56;
         let totalModifier = 0;
 
         // Sum up all hazard modifiers from dropdowns
         hazardSelects.forEach(select => {
             const value = parseInt(select.value) || 0;
+            console.log(`Hazard ${select.dataset.hazard}: ${value}`);
             totalModifier += value;
         });
 
         const total = base + totalModifier;
         finalTarget.value = total;
 
+        console.log(`Calculation: ${base} + ${totalModifier} = ${total}`);
+
         // Update breakdown display with animation
         if (targetBreakdown) {
             targetBreakdown.textContent = `${base} + ${totalModifier} =`;
+            console.log('Updated targetBreakdown.textContent to:', targetBreakdown.textContent);
             // Add pulse effect
             targetBreakdown.style.transform = 'scale(1.1)';
             setTimeout(() => {
                 targetBreakdown.style.transform = 'scale(1)';
             }, 300);
+        } else {
+            console.error('targetBreakdown element not found!');
         }
 
         // Also pulse the final target
