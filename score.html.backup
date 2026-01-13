@@ -90,44 +90,12 @@
                         <p>Your game has been recorded. Check the leaderboard to see your ranking.</p>
                     </div>
 
-                    <!-- Scoring Introduction -->
-                    <div class="scoring-intro-box">
-                        <h3>How Scoring Works</h3>
-                        <p>Scoring measures whether the community has built enough resilience to meet the challenges posed by the selected hazards. The severity of hazards sets the difficulty, while goals and projects generate points toward meeting that challenge.</p>
-                        <div class="scoring-steps-preview">
-                            <div class="step-preview">
-                                <strong>1. Set Target with Hazards</strong>
-                                <span>Base: 56 + Hazard points</span>
-                            </div>
-                            <div class="step-preview">
-                                <strong>2. Track Goals</strong>
-                                <span>6 points each</span>
-                            </div>
-                            <div class="step-preview">
-                                <strong>3. Enter Project Points</strong>
-                                <span>From completed cards</span>
-                            </div>
-                            <div class="step-preview">
-                                <strong>4. Compare Results</strong>
-                                <span>Did you meet the target?</span>
-                            </div>
-                        </div>
-                    </div>
-
                     <form class="score-form" id="scoreForm">
 
-                        <!-- Step 1: Set Target Score Using Hazards -->
+                        <!-- Step 1: Select Hazards -->
                         <div class="form-section">
-                            <h3>Step 1: Set the Target Score Using Hazards</h3>
-                            <div class="info-box">
-                                <p><strong>The Base Target Score is 56.</strong> Each hazard increases the target:</p>
-                                <ul>
-                                    <li><strong>Minor hazard</strong> adds +2 points</li>
-                                    <li><strong>Major hazard</strong> adds +5 points</li>
-                                </ul>
-                                <p style="margin-bottom: 0;"><em>Example: Base (56) + Flood Minor (+2) + Heat Major (+5) = Target of 63</em></p>
-                            </div>
-                            <p style="color: #6B7280; margin-bottom: 1rem; margin-top: 1rem;">Select the severity of each hazard affecting your community:</p>
+                            <h3>Step 1: Select Your Climate Hazards</h3>
+                            <p style="color: #6B7280; margin-bottom: 1rem;">Choose the severity of each hazard affecting your community and describe what it looks like.</p>
 
                             <div class="hazards-grid">
                                 <div class="hazard-row">
@@ -195,19 +163,9 @@
                             <input type="hidden" id="baseTarget" value="56">
                         </div>
 
-                        <!-- Step 3: Project Cards and End Game Points -->
+                        <!-- Step 2: Goals Achieved -->
                         <div class="form-section">
-                            <h3>Step 3: Project Cards and End Game Points</h3>
-                            <div class="info-box">
-                                <p><strong>Some project cards award End Game Points</strong>, which are scored only at the end of the game.</p>
-                                <ul>
-                                    <li>End Game Points are <strong>not added</strong> when the project is completed</li>
-                                    <li>They are totaled during <strong>final scoring</strong></li>
-                                    <li>Projects from any level may award points</li>
-                                </ul>
-                                <p style="margin-bottom: 0;"><em>Example: Level 1 (2 pts) + Level 2 (8 pts) + Level 3 (24 pts) = 34 total project points</em></p>
-                            </div>
-                            <p style="color: #6B7280; margin-bottom: 1rem; margin-top: 1rem;">Enter the <strong>total point values</strong> from all completed project cards for each player role:</p>
+                            <h3>Player Scores</h3>
                             <div class="scoring-table-container">
                                 <table class="scoring-table">
                                     <thead>
@@ -298,33 +256,15 @@
                                             <td colspan="4" style="text-align: right;"><strong>Team Total:</strong></td>
                                             <td class="total-cell"><span id="teamTotal">0</span></td>
                                         </tr>
-                                        <tr class="target-row-table">
-                                            <td colspan="4" style="text-align: right; padding: 1rem;">
-                                                <strong style="font-size: 1.1rem;">Final Target to Achieve:</strong>
-                                                <span id="targetBreakdown" class="target-breakdown" style="margin-left: 1rem; font-size: 1.1rem;">56 + 0 =</span>
-                                            </td>
-                                            <td class="total-cell" style="background: #FEF3C7; border: 3px solid #F59E0B;">
-                                                <span id="finalTarget" style="font-weight: 700; font-size: 1.5rem; color: #92400E;">56</span>
-                                            </td>
-                                        </tr>
                                     </tfoot>
                                 </table>
                             </div>
                         </div>
 
-                        <!-- Step 2: Community Resilience Goals -->
+                        <!-- Goals Achieved -->
                         <div class="form-section">
-                            <h3>Step 2: Community Resilience Goals (6 Points Each)</h3>
-                            <div class="info-box">
-                                <p><strong>Community Resilience Goals</strong> represent major outcomes across resilience domains.</p>
-                                <ul>
-                                    <li>Each completed goal is worth <strong>6 points</strong></li>
-                                    <li>Goals are scored <strong>during the game</strong></li>
-                                    <li>A maximum of <strong>one goal</strong> may be claimed per turn</li>
-                                </ul>
-                                <p style="margin-bottom: 0;"><em>Example: 4 goals completed = 4 × 6 = 24 points</em></p>
-                            </div>
-                            <p style="color: #6B7280; margin-bottom: 1rem; margin-top: 1rem;">Check off the goals your team achieved:</p>
+                            <h3>Goals Achieved</h3>
+                            <p style="color: #6B7280; margin-bottom: 1rem;">Check the goals your team achieved and add custom titles from your workshop.</p>
                             
                             <div class="score-goals-grid">
                                 <div class="score-goal-card" data-goal="A">
@@ -497,34 +437,27 @@
 
                         <!-- Win/Loss -->
                         <div class="form-section">
-                            <h3>Step 4: Final Outcome</h3>
-                            <div class="info-box">
-                                <p><strong>Your community's resilience is measured by comparing your total points to the target score.</strong></p>
-                                <p style="margin-bottom: 0;"><em>If you score at or above the target, your community has built sufficient resilience to withstand the selected hazards.</em></p>
-                            </div>
-
-                            <!-- Outcome Display -->
-                            <div class="outcome-display" id="outcomeDisplay">
-                                <div class="outcome-comparison">
-                                    <div class="outcome-item">
-                                        <span class="outcome-label">Target to Achieve:</span>
-                                        <span class="outcome-value" id="outcomeTarget">56</span>
-                                    </div>
-                                    <div class="outcome-item">
-                                        <span class="outcome-label">Your Score:</span>
-                                        <span class="outcome-value" id="outcomeScore">0</span>
-                                    </div>
-                                    <div class="outcome-item difference">
-                                        <span class="outcome-label">Difference:</span>
-                                        <span class="outcome-value" id="outcomeDifference">-56</span>
-                                    </div>
+                            <h3>Result</h3>
+                            <div class="win-loss-section">
+                                <div class="win-loss-toggle">
+                                    <button type="button" class="toggle-btn win" id="winBtn">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                        </svg>
+                                        Win
+                                    </button>
+                                    <button type="button" class="toggle-btn loss" id="lossBtn">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                                        </svg>
+                                        Loss
+                                    </button>
                                 </div>
-                                <div class="outcome-result" id="outcomeResult">
-                                    <p>Enter your scores above to see the result.</p>
-                                </div>
+                                <input type="hidden" id="gameResult" value="">
                             </div>
-
-                            <input type="hidden" id="gameResult" value="">
                         </div>
 
                         <!-- Opt-in to Leaderboard -->

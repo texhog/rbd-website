@@ -243,7 +243,17 @@ function initTargetCalculation() {
         });
 
         const total = base + totalModifier;
-        finalTarget.value = total;
+
+        // Update final target (now a span, not an input)
+        if (finalTarget) {
+            finalTarget.textContent = total;
+            console.log('Updated finalTarget to:', total);
+            // Add pulse effect
+            finalTarget.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                finalTarget.style.transform = 'scale(1)';
+            }, 300);
+        }
 
         console.log(`Calculation: ${base} + ${totalModifier} = ${total}`);
 
@@ -258,14 +268,6 @@ function initTargetCalculation() {
             }, 300);
         } else {
             console.error('targetBreakdown element not found!');
-        }
-
-        // Also pulse the final target
-        if (finalTarget) {
-            finalTarget.style.transform = 'scale(1.05)';
-            setTimeout(() => {
-                finalTarget.style.transform = 'scale(1)';
-            }, 300);
         }
 
         updateWinLossAuto();
@@ -323,23 +325,49 @@ function calculateTotals() {
     updateWinLossAuto();
 }
 
-// Auto-determine win/loss
+// Auto-determine win/loss and update outcome display
 function updateWinLossAuto() {
     const teamTotal = parseInt(document.getElementById('teamTotal')?.textContent) || 0;
-    const finalTarget = parseInt(document.getElementById('finalTarget')?.value) || 56;
-    
-    const winBtn = document.getElementById('winBtn');
-    const lossBtn = document.getElementById('lossBtn');
+    const finalTarget = parseInt(document.getElementById('finalTarget')?.textContent) || 56;
+
     const gameResult = document.getElementById('gameResult');
-    
-    if (teamTotal >= finalTarget && teamTotal > 0) {
-        winBtn?.classList.add('active');
-        lossBtn?.classList.remove('active');
-        if (gameResult) gameResult.value = 'win';
-    } else if (teamTotal > 0) {
-        winBtn?.classList.remove('active');
-        lossBtn?.classList.add('active');
-        if (gameResult) gameResult.value = 'loss';
+    const outcomeTarget = document.getElementById('outcomeTarget');
+    const outcomeScore = document.getElementById('outcomeScore');
+    const outcomeDifference = document.getElementById('outcomeDifference');
+    const outcomeResult = document.getElementById('outcomeResult');
+
+    // Update outcome display values
+    if (outcomeTarget) outcomeTarget.textContent = finalTarget;
+    if (outcomeScore) outcomeScore.textContent = teamTotal;
+
+    const difference = teamTotal - finalTarget;
+    if (outcomeDifference) {
+        outcomeDifference.textContent = (difference >= 0 ? '+' : '') + difference;
+    }
+
+    // Update result message
+    if (outcomeResult && teamTotal > 0) {
+        outcomeResult.classList.remove('win', 'loss');
+
+        if (teamTotal >= finalTarget) {
+            outcomeResult.classList.add('win');
+            outcomeResult.innerHTML = `
+                <p><strong>✓ Success!</strong></p>
+                <p>Your community has built sufficient resilience to withstand the selected hazards. You scored ${teamTotal} points and needed ${finalTarget} to succeed.</p>
+            `;
+            if (gameResult) gameResult.value = 'win';
+        } else {
+            outcomeResult.classList.add('loss');
+            const shortfall = finalTarget - teamTotal;
+            outcomeResult.innerHTML = `
+                <p><strong>Close!</strong></p>
+                <p>Your community came close but did not build sufficient resilience to fully withstand the selected hazards. You scored ${teamTotal} points but needed ${finalTarget}. You were ${shortfall} points short.</p>
+            `;
+            if (gameResult) gameResult.value = 'loss';
+        }
+    } else if (outcomeResult && teamTotal === 0) {
+        outcomeResult.classList.remove('win', 'loss');
+        outcomeResult.innerHTML = '<p>Enter your scores above to see the result.</p>';
     }
 }
 
