@@ -224,7 +224,7 @@ function initTargetCalculation() {
     const finalTarget = document.getElementById('finalTarget');
     
     function calculateTarget() {
-        const base = parseInt(baseTarget.value) || 50;
+        const base = parseInt(baseTarget.value) || 56;
         const minor = parseInt(minorHazards.value) || 0;
         const major = parseInt(majorHazards.value) || 0;
         
@@ -278,7 +278,7 @@ function calculateTotals() {
 // Auto-determine win/loss
 function updateWinLossAuto() {
     const teamTotal = parseInt(document.getElementById('teamTotal')?.textContent) || 0;
-    const finalTarget = parseInt(document.getElementById('finalTarget')?.value) || 50;
+    const finalTarget = parseInt(document.getElementById('finalTarget')?.value) || 56;
     
     const winBtn = document.getElementById('winBtn');
     const lossBtn = document.getElementById('lossBtn');
@@ -376,7 +376,7 @@ function initFormSubmission() {
                 form.reset();
                 document.querySelectorAll('.row-total').forEach(el => el.textContent = '0');
                 document.getElementById('teamTotal').textContent = '0';
-                document.getElementById('finalTarget').value = '50';
+                document.getElementById('finalTarget').value = '56';
                 document.querySelectorAll('.score-goal-card').forEach(card => card.classList.remove('achieved'));
                 document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
                 document.getElementById('displayNameSection').classList.remove('visible');
@@ -394,7 +394,7 @@ async function saveScore() {
     const data = {
         display_name: optIn ? document.getElementById('displayName').value || 'Anonymous Team' : null,
         team_score: parseInt(document.getElementById('teamTotal').textContent) || 0,
-        target_score: parseInt(document.getElementById('finalTarget').value) || 50,
+        target_score: parseInt(document.getElementById('finalTarget').value) || 56,
         is_win: document.getElementById('gameResult').value === 'win',
         goals_achieved: document.querySelectorAll('.goal-checkbox:checked').length,
         created_at: new Date().toISOString()

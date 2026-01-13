@@ -583,3 +583,125 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
     margin: 0 auto;
     display: block;
 }
+
+/* =====================================================
+   TOKEN DISPLAY IN RULES PAGE
+   ===================================================== */
+
+.tokens-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.token-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--color-gray-50);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-gray-200);
+}
+
+.token-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.token-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.token-info strong {
+    font-size: 0.9375rem;
+}
+
+.token-info span {
+    font-size: 0.8125rem;
+    color: var(--color-gray-600);
+}
+
+/* =====================================================
+   PLAYER MAT EXPLANATION
+   ===================================================== */
+
+.player-mat-explanation {
+    background: var(--color-gray-50);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+}
+
+.player-mat-explanation h4 {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-navy);
+}
+
+.mat-diagram {
+    margin: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.mat-diagram-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+}
+
+.mat-sections-grid {
+    display: grid;
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+@media (min-width: 768px) {
+    .mat-sections-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.mat-section-item {
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+}
+
+.mat-section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.mat-section-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--color-coral);
+    color: var(--color-white);
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}
+
+.mat-section-item p {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: var(--color-gray-600);
+}
+
+.mat-section-item strong {
+    color: var(--color-navy);
+}
