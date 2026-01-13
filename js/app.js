@@ -220,6 +220,7 @@ function initTabs() {
 function initTargetCalculation() {
     const baseTarget = document.getElementById('baseTarget');
     const finalTarget = document.getElementById('finalTarget');
+    const targetBreakdown = document.getElementById('targetBreakdown');
     const hazardSelects = document.querySelectorAll('.hazard-select');
 
     function calculateTarget() {
@@ -234,6 +235,11 @@ function initTargetCalculation() {
 
         const total = base + totalModifier;
         finalTarget.value = total;
+
+        // Update breakdown display
+        if (targetBreakdown) {
+            targetBreakdown.textContent = `${base} + ${totalModifier} =`;
+        }
 
         updateWinLossAuto();
     }
