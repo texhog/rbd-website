@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resilience by Design | Building Community Climate Readiness</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" width="40" height="40">
+                        <circle cx="20" cy="20" r="18" fill="#E07A5F"/>
+                        <g stroke="#1D3557" stroke-width="2" fill="none">
+                            <line x1="20" y1="6" x2="20" y2="12"/>
+                            <line x1="20" y1="28" x2="20" y2="34"/>
+                            <line x1="6" y1="20" x2="12" y2="20"/>
+                            <line x1="28" y1="20" x2="34" y2="20"/>
+                            <line x1="10" y1="10" x2="14" y2="14"/>
+                            <line x1="26" y1="26" x2="30" y2="30"/>
+                            <line x1="30" y1="10" x2="26" y2="14"/>
+                            <line x1="14" y1="26" x2="10" y2="30"/>
+                        </g>
+                        <circle cx="20" cy="20" r="4" fill="#1D3557"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Resilience <span class="logo-by">by</span> Design</span>
+                </div>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="rules.html" class="nav-link">Learn to Play</a></li>
+                <li><a href="score.html" class="nav-link">Score & Leaderboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-background">
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">A Serious Game for Climate Resilience</div>
+            <h1 class="hero-title">
+                Resilience<br>
+                <span class="hero-title-accent">by Design</span>
+            </h1>
+            <p class="hero-subtitle">Building Community Climate Readiness</p>
+            <p class="hero-description">
+                A collaborative tabletop game focused on climate change planning, adaptation, 
+                and building resilience in your community. Work together to complete projects, 
+                achieve goals, and prepare for climate-related hazards.
+            </p>
+            <div class="hero-actions">
+                <a href="rules.html" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                    Learn to Play
+                </a>
+                <a href="score.html" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                        <path d="M4 22h16"></path>
+                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                    </svg>
+                    Score a Game
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Resource Tokens Section -->
+    <section class="tokens-section">
+        <div class="container">
+            <h2 class="section-title">Resource Tokens</h2>
+            <p class="section-description">
+                Use these six types of resources to complete projects and build community resilience.
+            </p>
+            <div class="tokens-grid">
+                <div class="token-card">
+                    <div class="token-icon token-volunteers">
+                        <svg viewBox="0 0 60 60" width="60" height="60">
+                            <circle cx="30" cy="30" r="28" fill="#3B82F6"/>
+                            <circle cx="30" cy="30" r="22" fill="white"/>
+                            <g fill="#3B82F6">
+                                <circle cx="30" cy="20" r="5"/>
+                                <path d="M22 38c0-4.4 3.6-8 8-8s8 3.6 8 8v2H22v-2z"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="token-name">Volunteers</h3>
+                    <p class="token-color">Blue</p>
+                </div>
+                <div class="token-card">
+                    <div class="token-icon token-knowledge">
+                        <svg viewBox="0 0 60 60" width="60" height="60">
+                            <circle cx="30" cy="30" r="28" fill="#22C55E"/>
+                            <circle cx="30" cy="30" r="22" fill="white"/>
+                            <g fill="#22C55E">
+                                <path d="M30 15c-2 0-4 1-5 3l-8 14c-1 2 0 4 2 5h22c2-1 3-3 2-5l-8-14c-1-2-3-3-5-3z"/>
+                                <rect x="28" y="38" width="4" height="6" rx="1"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="token-name">Knowledge</h3>
+                    <p class="token-color">Green</p>
+                </div>
+                <div class="token-card">
+                    <div class="token-icon token-funding">
+                        <svg viewBox="0 0 60 60" width="60" height="60">
+                            <circle cx="30" cy="30" r="28" fill="#EF4444"/>
+                            <circle cx="30" cy="30" r="22" fill="white"/>
+                            <g fill="#EF4444">
+                                <circle cx="30" cy="30" r="12" fill="none" stroke="#EF4444" stroke-width="3"/>
+                                <text x="30" y="35" font-size="14" font-weight="bold" text-anchor="middle" fill="#EF4444">$</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="token-name">Funding</h3>
+                    <p class="token-color">Red</p>
+                </div>
+                <div class="token-card">
+                    <div class="token-icon token-materials">
+                        <svg viewBox="0 0 60 60" width="60" height="60">
+                            <circle cx="30" cy="30" r="28" fill="#EAB308"/>
+                            <circle cx="30" cy="30" r="22" fill="white"/>
+                            <g fill="#EAB308">
+                                <rect x="20" y="22" width="10" height="14" rx="1"/>
+                                <rect x="32" y="26" width="10" height="14" rx="1"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="token-name">Materials</h3>
+                    <p class="token-color">Yellow</p>
+                </div>
+                <div class="token-card">
+                    <div class="token-icon token-political">
+                        <svg viewBox="0 0 60 60" width="60" height="60">
+                            <circle cx="30" cy="30" r="28" fill="#1F2937"/>
+                            <circle cx="30" cy="30" r="22" fill="white"/>
+                            <g fill="#1F2937">
+                                <path d="M30 18c-3 0-5 2-5 4v2h-4v14h18V24h-4v-2c0-2-2-4-5-4zm0 3c1 0 2 1 2 2v1h-4v-1c0-1 1-2 2-2z"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="token-name">Political Will</h3>
+                    <p class="token-color">Black</p>
+                </div>
+                <div class="token-card">
+                    <div class="token-icon token-wildaid">
+                        <svg viewBox="0 0 60 60" width="60" height="60">
+                            <circle cx="30" cy="30" r="28" fill="#D97706"/>
+                            <circle cx="30" cy="30" r="22" fill="white"/>
+                            <g fill="none" stroke="#D97706" stroke-width="2">
+                                <circle cx="30" cy="30" r="14"/>
+                                <circle cx="30" cy="30" r="9"/>
+                                <circle cx="30" cy="30" r="4"/>
+                            </g>
+                            <circle cx="30" cy="30" r="2" fill="#D97706"/>
+                        </svg>
+                    </div>
+                    <h3 class="token-name">Wild Aid</h3>
+                    <p class="token-color">Gold (Wild)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="overview-number">1</div>
+                    <h3>Pre-Game Workshop</h3>
+                    <p>Select hazards for your region, co-create community resilience goals, and set your target score based on hazard difficulty.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-number">2</div>
+                    <h3>1-Hour Play Session</h3>
+                    <p>Work together to complete projects using resource tokens. Each turn, take resources, reserve projects, or complete them for points.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-number">3</div>
+                    <h3>Achieve Goals</h3>
+                    <p>Claim community resilience goals by collecting permanent bonuses from completed projects. Each goal is worth 6 points.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-number">4</div>
+                    <h3>Debrief & Plan</h3>
+                    <p>Discuss what worked, what didn't, and how to apply lessons learned to real-world climate resilience planning in your community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hazards Section -->
+    <section class="hazards-section">
+        <div class="container">
+            <h2 class="section-title">Climate Hazards</h2>
+            <p class="section-description">
+                Choose hazards relevant to your community. Each hazard increases your target score.
+            </p>
+            <div class="hazards-grid">
+                <div class="hazard-card">
+                    <div class="hazard-icon">🔥</div>
+                    <h3>Wildfire</h3>
+                    <p>Minor +2 | Major +5</p>
+                </div>
+                <div class="hazard-card">
+                    <div class="hazard-icon">🌊</div>
+                    <h3>Flood</h3>
+                    <p>Minor +2 | Major +5</p>
+                </div>
+                <div class="hazard-card">
+                    <div class="hazard-icon">☀️</div>
+                    <h3>Extreme Heat</h3>
+                    <p>Minor +2 | Major +5</p>
+                </div>
+                <div class="hazard-card">
+                    <div class="hazard-icon">❄️</div>
+                    <h3>Extreme Cold</h3>
+                    <p>Minor +2 | Major +5</p>
+                </div>
+                <div class="hazard-card">
+                    <div class="hazard-icon">🏜️</div>
+                    <h3>Drought</h3>
+                    <p>Minor +2 | Major +5</p>
+                </div>
+                <div class="hazard-card">
+                    <div class="hazard-icon">⛰️</div>
+                    <h3>Landslide</h3>
+                    <p>Minor +2 | Major +5</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Player Roles Preview -->
+    <section class="roles-section">
+        <div class="container">
+            <h2 class="section-title">Player Roles</h2>
+            <p class="section-description">
+                Choose 4 of 7 available roles. Each has unique abilities and trade powers.
+            </p>
+            <div class="roles-grid">
+                <div class="role-card">
+                    <h3>Local Government</h3>
+                    <p>Reserve up to 4 projects. Convert Materials to Volunteers.</p>
+                </div>
+                <div class="role-card">
+                    <h3>Local Authority</h3>
+                    <p>Reserve up to 4 projects. Convert Materials to Volunteers.</p>
+                </div>
+                <div class="role-card">
+                    <h3>Business & Industry</h3>
+                    <p>Pay less Funding on Level 2-3 projects. Draw random tokens.</p>
+                </div>
+                <div class="role-card">
+                    <h3>Infrastructure Owners</h3>
+                    <p>Pay less Materials on Level 2-3 projects. Draw random tokens.</p>
+                </div>
+                <div class="role-card">
+                    <h3>First Nations</h3>
+                    <p>Treat Knowledge as Political Will. Bonus points on combined costs. No Wild Aid cap.</p>
+                </div>
+                <div class="role-card">
+                    <h3>Province</h3>
+                    <p>Take 4 different tokens. Program Transfer ability.</p>
+                </div>
+                <div class="role-card">
+                    <h3>Community</h3>
+                    <p>Treat Volunteers as Materials. Gain Knowledge on Volunteer projects.</p>
+                </div>
+            </div>
+            <div class="roles-cta">
+                <a href="rules.html#player-roles" class="btn btn-outline">View Full Role Details</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Build Resilience?</h2>
+            <p>Learn the rules and start playing with your community today.</p>
+            <div class="cta-actions">
+                <a href="rules.html" class="btn btn-primary btn-large">Learn to Play</a>
+                <a href="score.html" class="btn btn-secondary btn-large">Record Your Game</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg viewBox="0 0 40 40" width="32" height="32">
+                            <circle cx="20" cy="20" r="18" fill="#E07A5F"/>
+                            <g stroke="white" stroke-width="2" fill="none">
+                                <line x1="20" y1="6" x2="20" y2="12"/>
+                                <line x1="20" y1="28" x2="20" y2="34"/>
+                                <line x1="6" y1="20" x2="12" y2="20"/>
+                                <line x1="28" y1="20" x2="34" y2="20"/>
+                            </g>
+                            <circle cx="20" cy="20" r="4" fill="white"/>
+                        </svg>
+                        <span>Resilience by Design</span>
+                    </div>
+                    <p>Building Community Climate Readiness</p>
+                    <p class="footer-license">Licensed under CC-BY-NC</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="rules.html">Learn to Play</a></li>
+                        <li><a href="score.html">Score & Leaderboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://resiliencebydesign.com" target="_blank" rel="noopener">About the Project</a></li>
+                        <li><a href="https://resiliencebydesign.com" target="_blank" rel="noopener">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Resilience by Design.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

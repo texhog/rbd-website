@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score & Leaderboard | Resilience by Design</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" width="40" height="40">
+                        <circle cx="20" cy="20" r="18" fill="#E07A5F"/>
+                        <g stroke="#1D3557" stroke-width="2" fill="none">
+                            <line x1="20" y1="6" x2="20" y2="12"/><line x1="20" y1="28" x2="20" y2="34"/>
+                            <line x1="6" y1="20" x2="12" y2="20"/><line x1="28" y1="20" x2="34" y2="20"/>
+                            <line x1="10" y1="10" x2="14" y2="14"/><line x1="26" y1="26" x2="30" y2="30"/>
+                            <line x1="30" y1="10" x2="26" y2="14"/><line x1="14" y1="26" x2="10" y2="30"/>
+                        </g>
+                        <circle cx="20" cy="20" r="4" fill="#1D3557"/>
+                    </svg>
+                </div>
+                <div class="logo-text"><span class="logo-title">Resilience <span class="logo-by">by</span> Design</span></div>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="rules.html" class="nav-link">Learn to Play</a></li>
+                <li><a href="score.html" class="nav-link active">Score & Leaderboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Score & Leaderboard</h1>
+            <p>Record your game results and see how your community compares</p>
+        </div>
+    </header>
+
+    <main class="score-page">
+        <div class="container">
+            <div class="score-container">
+                
+                <!-- Tab Navigation -->
+                <div class="tab-nav">
+                    <button class="tab-btn active" data-tab="record">Record Score</button>
+                    <button class="tab-btn" data-tab="leaderboard">Leaderboards</button>
+                </div>
+
+                <!-- Record Score Tab -->
+                <div class="tab-content active" id="tab-record">
+                    
+                    <div class="success-message" id="successMessage">
+                        <strong>Score saved successfully!</strong>
+                        <p>Your game has been recorded. Check the leaderboard to see your ranking.</p>
+                    </div>
+
+                    <!-- Goals Summary Box -->
+                    <div class="goals-summary-box">
+                        <h3>Community Resilience Goals</h3>
+                        <ul>
+                            <li>Each goal is worth <strong>6 points</strong></li>
+                            <li>To claim, you must meet the requirement using <strong>permanent bonuses only</strong> of completed projects (not tokens in hand)</li>
+                            <li>You may claim at most <strong>1 goal per turn</strong></li>
+                            <li>You have <strong>1 hour</strong> to complete this activity</li>
+                        </ul>
+                    </div>
+
+                    <form class="score-form" id="scoreForm">
+                        
+                        <!-- Target Calculation -->
+                        <div class="form-section">
+                            <h3>Target Calculation</h3>
+                            <div class="target-calculation">
+                                <div class="target-row">
+                                    <label>Base Target (starting score):</label>
+                                    <input type="number" id="baseTarget" value="50" readonly class="form-input">
+                                </div>
+                                <div class="target-row">
+                                    <label>Minor Hazard Modifiers (+2 each):</label>
+                                    <input type="number" id="minorHazards" value="0" min="0" max="6" class="form-input">
+                                </div>
+                                <div class="target-row">
+                                    <label>Major Hazard Modifiers (+5 each):</label>
+                                    <input type="number" id="majorHazards" value="0" min="0" max="6" class="form-input">
+                                </div>
+                                <div class="target-row final">
+                                    <label>Final Target to Achieve:</label>
+                                    <input type="number" id="finalTarget" value="50" readonly class="form-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Player Scoring Table -->
+                        <div class="form-section">
+                            <h3>Player Scores</h3>
+                            <div class="scoring-table-container">
+                                <table class="scoring-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Player Role</th>
+                                            <th>Level 1 Projects</th>
+                                            <th>Level 2 Projects</th>
+                                            <th>Level 3 Projects</th>
+                                            <th>Goals (A-F)</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <select class="player-role" data-row="1">
+                                                    <option value="">Select Role...</option>
+                                                    <option value="Local Government">Local Government</option>
+                                                    <option value="Local Authority">Local Authority</option>
+                                                    <option value="Business and Industry">Business and Industry</option>
+                                                    <option value="Infrastructure Owners">Infrastructure Owners</option>
+                                                    <option value="First Nations">First Nations</option>
+                                                    <option value="Province">Province</option>
+                                                    <option value="Community">Community</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="number" class="level1-pts" data-row="1" value="0" min="0"></td>
+                                            <td><input type="number" class="level2-pts" data-row="1" value="0" min="0"></td>
+                                            <td><input type="number" class="level3-pts" data-row="1" value="0" min="0"></td>
+                                            <td><input type="number" class="goals-pts" data-row="1" value="0" min="0" step="6"></td>
+                                            <td class="total-cell"><span class="row-total" data-row="1">0</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <select class="player-role" data-row="2">
+                                                    <option value="">Select Role...</option>
+                                                    <option value="Local Government">Local Government</option>
+                                                    <option value="Local Authority">Local Authority</option>
+                                                    <option value="Business and Industry">Business and Industry</option>
+                                                    <option value="Infrastructure Owners">Infrastructure Owners</option>
+                                                    <option value="First Nations">First Nations</option>
+                                                    <option value="Province">Province</option>
+                                                    <option value="Community">Community</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="number" class="level1-pts" data-row="2" value="0" min="0"></td>
+                                            <td><input type="number" class="level2-pts" data-row="2" value="0" min="0"></td>
+                                            <td><input type="number" class="level3-pts" data-row="2" value="0" min="0"></td>
+                                            <td><input type="number" class="goals-pts" data-row="2" value="0" min="0" step="6"></td>
+                                            <td class="total-cell"><span class="row-total" data-row="2">0</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <select class="player-role" data-row="3">
+                                                    <option value="">Select Role...</option>
+                                                    <option value="Local Government">Local Government</option>
+                                                    <option value="Local Authority">Local Authority</option>
+                                                    <option value="Business and Industry">Business and Industry</option>
+                                                    <option value="Infrastructure Owners">Infrastructure Owners</option>
+                                                    <option value="First Nations">First Nations</option>
+                                                    <option value="Province">Province</option>
+                                                    <option value="Community">Community</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="number" class="level1-pts" data-row="3" value="0" min="0"></td>
+                                            <td><input type="number" class="level2-pts" data-row="3" value="0" min="0"></td>
+                                            <td><input type="number" class="level3-pts" data-row="3" value="0" min="0"></td>
+                                            <td><input type="number" class="goals-pts" data-row="3" value="0" min="0" step="6"></td>
+                                            <td class="total-cell"><span class="row-total" data-row="3">0</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <select class="player-role" data-row="4">
+                                                    <option value="">Select Role...</option>
+                                                    <option value="Local Government">Local Government</option>
+                                                    <option value="Local Authority">Local Authority</option>
+                                                    <option value="Business and Industry">Business and Industry</option>
+                                                    <option value="Infrastructure Owners">Infrastructure Owners</option>
+                                                    <option value="First Nations">First Nations</option>
+                                                    <option value="Province">Province</option>
+                                                    <option value="Community">Community</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="number" class="level1-pts" data-row="4" value="0" min="0"></td>
+                                            <td><input type="number" class="level2-pts" data-row="4" value="0" min="0"></td>
+                                            <td><input type="number" class="level3-pts" data-row="4" value="0" min="0"></td>
+                                            <td><input type="number" class="goals-pts" data-row="4" value="0" min="0" step="6"></td>
+                                            <td class="total-cell"><span class="row-total" data-row="4">0</span></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="5" style="text-align: right;"><strong>Team Total:</strong></td>
+                                            <td class="total-cell"><span id="teamTotal">0</span></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Goals Achieved -->
+                        <div class="form-section">
+                            <h3>Goals Achieved</h3>
+                            <p style="color: #6B7280; margin-bottom: 1rem;">Check the goals your team achieved and add custom titles from your workshop.</p>
+                            
+                            <div class="score-goals-grid">
+                                <div class="score-goal-card" data-goal="A">
+                                    <div class="score-goal-header">
+                                        <label><input type="checkbox" class="goal-checkbox" data-goal="A"> Goal A</label>
+                                        <span class="score-goal-points">6 PTS</span>
+                                    </div>
+                                    <div class="score-goal-body">
+                                        <p class="score-goal-category">Society, Culture & Relationality</p>
+                                        <input type="text" class="score-goal-title-input" placeholder="Short title (optional)">
+                                        <div class="score-goal-cost">
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #3B82F6;">3×</span></span>
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #22C55E;">3×</span></span>
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #EF4444;">3×</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="score-goal-card" data-goal="B">
+                                    <div class="score-goal-header">
+                                        <label><input type="checkbox" class="goal-checkbox" data-goal="B"> Goal B</label>
+                                        <span class="score-goal-points">6 PTS</span>
+                                    </div>
+                                    <div class="score-goal-body">
+                                        <p class="score-goal-category">Built Environment</p>
+                                        <input type="text" class="score-goal-title-input" placeholder="Short title (optional)">
+                                        <div class="score-goal-cost">
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #EAB308;">3×</span></span>
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #1F2937;">3×</span></span>
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #22C55E;">3×</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="score-goal-card" data-goal="C">
+                                    <div class="score-goal-header">
+                                        <label><input type="checkbox" class="goal-checkbox" data-goal="C"> Goal C</label>
+                                        <span class="score-goal-points">6 PTS</span>
+                                    </div>
+                                    <div class="score-goal-body">
+                                        <p class="score-goal-category">Natural Environment</p>
+                                        <input type="text" class="score-goal-title-input" placeholder="Short title (optional)">
+                                        <div class="score-goal-cost">
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #3B82F6;">3×</span></span>
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #EAB308;">3×</span></span>
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #1F2937;">3×</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="score-goal-card" data-goal="D">
+                                    <div class="score-goal-header">
+                                        <label><input type="checkbox" class="goal-checkbox" data-goal="D"> Goal D</label>
+                                        <span class="score-goal-points">6 PTS</span>
+                                    </div>
+                                    <div class="score-goal-body">
+                                        <p class="score-goal-category">Economy</p>
+                                        <input type="text" class="score-goal-title-input" placeholder="Short title (optional)">
+                                        <div class="score-goal-cost">
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #EF4444;">4×</span></span>
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #22C55E;">4×</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="score-goal-card" data-goal="E">
+                                    <div class="score-goal-header">
+                                        <label><input type="checkbox" class="goal-checkbox" data-goal="E"> Goal E</label>
+                                        <span class="score-goal-points">6 PTS</span>
+                                    </div>
+                                    <div class="score-goal-body">
+                                        <p class="score-goal-category">Governance</p>
+                                        <input type="text" class="score-goal-title-input" placeholder="Short title (optional)">
+                                        <div class="score-goal-cost">
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #3B82F6;">4×</span></span>
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #1F2937;">4×</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="score-goal-card" data-goal="F">
+                                    <div class="score-goal-header">
+                                        <label><input type="checkbox" class="goal-checkbox" data-goal="F"> Goal F</label>
+                                        <span class="score-goal-points">6 PTS</span>
+                                    </div>
+                                    <div class="score-goal-body">
+                                        <p class="score-goal-category">Health & Wellbeing</p>
+                                        <input type="text" class="score-goal-title-input" placeholder="Short title (optional)">
+                                        <div class="score-goal-cost">
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #3B82F6;">3×</span></span>
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #22C55E;">3×</span></span>
+                                            <span class="score-cost-item"><span class="score-cost-icon" style="border-color: #EF4444;">3×</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Win/Loss -->
+                        <div class="form-section">
+                            <h3>Result</h3>
+                            <div class="win-loss-section">
+                                <div class="win-loss-toggle">
+                                    <button type="button" class="toggle-btn win" id="winBtn">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                        </svg>
+                                        Win
+                                    </button>
+                                    <button type="button" class="toggle-btn loss" id="lossBtn">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                                        </svg>
+                                        Loss
+                                    </button>
+                                </div>
+                                <input type="hidden" id="gameResult" value="">
+                            </div>
+                        </div>
+
+                        <!-- Opt-in to Leaderboard -->
+                        <div class="opt-in-section">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="optInLeaderboard">
+                                <div class="checkbox-text">
+                                    <strong>Add this score to the public leaderboard</strong>
+                                    <span>Your team's score will be visible to others. Only your display name will be shown, not individual player names.</span>
+                                </div>
+                            </label>
+                            <div class="display-name-input" id="displayNameSection">
+                                <div class="form-group">
+                                    <label class="form-label">Team Display Name</label>
+                                    <input type="text" id="displayName" class="form-input" placeholder="e.g., Victoria Climate Champions">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="resetForm">Reset Form</button>
+                            <button type="submit" class="btn btn-primary btn-large">Save Score</button>
+                        </div>
+                    </form>
+
+                    <!-- Post-Game Debrief (Collapsible) -->
+                    <div class="debrief-section">
+                        <div class="debrief-accordion">
+                            <button class="debrief-header" id="debriefToggle">
+                                <span>Post-Game Debrief</span>
+                                <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="debrief-content" id="debriefContent">
+                                <p style="color: #6B7280; margin-bottom: 1.5rem;">The reflection questions and project sprint below help translate insights from the game into concrete actions that support local disaster and climate resilience.</p>
+                                
+                                <div class="debrief-block">
+                                    <h4>Translating Game Dynamics to Real Life</h4>
+                                    <ul>
+                                        <li>What dynamics shaped success in the game – and where do you see those same dynamics in your real work?
+                                            <ul class="sub-list">
+                                                <li>Where did collaboration clearly accelerate progress?</li>
+                                                <li>Where did competition, siloing, or resource hoarding slow things down?</li>
+                                                <li>Which roles had disproportionate influence – and does that mirror reality?</li>
+                                            </ul>
+                                        </li>
+                                        <li>How did the game help (or fail to help) you move toward your resilience goals?
+                                            <ul class="sub-list">
+                                                <li>Which choices felt aligned with your real priorities?</li>
+                                                <li>Where did the scoring or randomness push you in directions you wouldn't choose in real life?</li>
+                                                <li>What does this tell you about incentives, funding structures, or mandates in the real world?</li>
+                                            </ul>
+                                        </li>
+                                        <li>What is one insight from the game you could apply right now to advance a resilience goal in your community or organization?</li>
+                                    </ul>
+                                </div>
+
+                                <div class="debrief-block">
+                                    <h4>Resilience Project Sprint</h4>
+                                    <p>Choose one resilience goal and generate:</p>
+                                    <ul>
+                                        <li><strong>1 immediate (1-3 month) action</strong></li>
+                                        <li><strong>1 medium-term (6-24 month) project</strong></li>
+                                        <li><strong>1 long-term (5-10 year) transformation</strong></li>
+                                    </ul>
+                                    <p style="margin-top: 1rem;"><strong>Prompts to guide your thinking:</strong></p>
+                                    <ul>
+                                        <li>Which resilience goal could move forward with a small or early win?</li>
+                                        <li>What's one action that could strengthen relationships, build trust, or start coordination?</li>
+                                        <li>Which player capacities were leveraged or overlooked? Who was missing from the table?</li>
+                                        <li>How could Indigenous, local, or experiential knowledge change the system map?</li>
+                                        <li>Imagine resilience success... if you could invest in one cross-system project for your region, what would it be?</li>
+                                    </ul>
+                                </div>
+
+                                <div class="debrief-block">
+                                    <h4>Final Thoughts</h4>
+                                    <p>If this game is a simplified model of how resilience gets built, what does it suggest we need to change — in our processes, relationships, or incentives — to make real resilience possible here?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Leaderboard Tab -->
+                <div class="tab-content" id="tab-leaderboard">
+                    
+                    <div class="leaderboard-section">
+                        <h3>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                                <path d="M4 22h16"></path>
+                                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                                <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                            </svg>
+                            Most Wins
+                        </h3>
+                        <table class="leaderboard-table" id="winsLeaderboard">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Team Name</th>
+                                    <th>Wins</th>
+                                    <th>Games Played</th>
+                                    <th>Win Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Populated by JavaScript -->
+                            </tbody>
+                        </table>
+                        <div class="no-data" id="noWinsData">
+                            <p>No games recorded yet. Be the first to add your score!</p>
+                        </div>
+                    </div>
+
+                    <div class="leaderboard-section">
+                        <h3>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                            Highest Scores
+                        </h3>
+                        <table class="leaderboard-table" id="scoresLeaderboard">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Team Name</th>
+                                    <th>Score</th>
+                                    <th>Target</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Populated by JavaScript -->
+                            </tbody>
+                        </table>
+                        <div class="no-data" id="noScoresData">
+                            <p>No games recorded yet. Be the first to add your score!</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg viewBox="0 0 40 40" width="32" height="32">
+                            <circle cx="20" cy="20" r="18" fill="#E07A5F"/>
+                            <g stroke="white" stroke-width="2" fill="none">
+                                <line x1="20" y1="6" x2="20" y2="12"/><line x1="20" y1="28" x2="20" y2="34"/>
+                                <line x1="6" y1="20" x2="12" y2="20"/><line x1="28" y1="20" x2="34" y2="20"/>
+                            </g>
+                            <circle cx="20" cy="20" r="4" fill="white"/>
+                        </svg>
+                        <span>Resilience by Design</span>
+                    </div>
+                    <p>Building Community Climate Readiness</p>
+                    <p class="footer-license">Licensed under CC-BY-NC</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="rules.html">Learn to Play</a></li>
+                        <li><a href="score.html">Score & Leaderboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://resiliencebydesign.com" target="_blank" rel="noopener">About the Project</a></li>
+                        <li><a href="https://resiliencebydesign.com" target="_blank" rel="noopener">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Resilience by Design.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
