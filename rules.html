@@ -327,90 +327,62 @@
                         </ol>
 
                         <div class="setup-diagram">
-                            <h4>Table Layout - Project Cards</h4>
-                            <div class="diagram-grid">
-                                <div class="diagram-row">
-                                    <div style="text-align: center; padding: var(--spacing-md);">
-                                        <div style="font-weight: 600; color: #14B8A6; margin-bottom: var(--spacing-xs); font-size: 0.875rem;">LEVEL 3</div>
-                                        <div class="deck-placeholder deck-level3">
-                                            <img src="images/backs/level3-back.jpg" alt="Level 3 Deck (Face Down)" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                                        </div>
-                                        <div style="font-size: 0.75rem; color: #6B7280; margin-top: var(--spacing-xs);">Face Down</div>
+                            <h4 style="text-align: center; font-size: 1.75rem; margin-bottom: var(--spacing-xl);">Project Cards</h4>
+
+                            <div style="display: grid; grid-template-columns: 180px 1fr 120px; gap: var(--spacing-lg); max-width: 1000px; margin: 0 auto;">
+                                <!-- Face Down Column -->
+                                <div style="text-align: center;">
+                                    <div style="margin-bottom: var(--spacing-2xl);">
+                                        <img src="images/backs/level3-back.jpg" alt="Level 3 Deck" style="width: 120px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); margin: 0 auto 8px;">
+                                        <div style="font-size: 2rem; font-weight: 700; color: #14B8A6;">3</div>
                                     </div>
-                                    <div class="card-slots">
-                                        <div class="card-slot">
-                                            <img src="images/cards/level3-example-a.jpg" alt="Level 3 Card" style="width: 100%; height: auto; border-radius: 6px;">
-                                        </div>
-                                        <div class="card-slot">
-                                            <img src="images/cards/level3-example-a.jpg" alt="Level 3 Card" style="width: 100%; height: auto; border-radius: 6px;">
-                                        </div>
-                                        <div class="card-slot">
-                                            <img src="images/cards/level3-example-b.jpg" alt="Level 3 Card" style="width: 100%; height: auto; border-radius: 6px;">
-                                        </div>
-                                        <div class="card-slot">
-                                            <img src="images/cards/level3-example-b.jpg" alt="Level 3 Card" style="width: 100%; height: auto; border-radius: 6px;">
-                                        </div>
+                                    <div style="margin-bottom: var(--spacing-2xl);">
+                                        <img src="images/backs/level2-back.jpg" alt="Level 2 Deck" style="width: 120px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); margin: 0 auto 8px;">
+                                        <div style="font-size: 2rem; font-weight: 700; color: #06B6D4;">2</div>
                                     </div>
+                                    <div>
+                                        <img src="images/backs/level1-back.jpg" alt="Level 1 Deck" style="width: 120px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); margin: 0 auto 8px;">
+                                        <div style="font-size: 2rem; font-weight: 700; color: #E07A5F;">1</div>
+                                    </div>
+                                    <div style="margin-top: var(--spacing-2xl); font-size: 1.25rem; font-weight: 600; color: var(--color-navy);">Face Down</div>
                                 </div>
-                                <div style="text-align: center; padding: var(--spacing-xs) 0; font-size: 1.25rem; color: #6B7280; font-weight: 600;">↑ Face Up Cards (4 per level) ↑</div>
-                                <div class="diagram-row">
-                                    <div style="text-align: center; padding: var(--spacing-md);">
-                                        <div style="font-weight: 600; color: #06B6D4; margin-bottom: var(--spacing-xs); font-size: 0.875rem;">LEVEL 2</div>
-                                        <div class="deck-placeholder deck-level2">
-                                            <img src="images/backs/level2-back.jpg" alt="Level 2 Deck (Face Down)" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                                        </div>
-                                        <div style="font-size: 0.75rem; color: #6B7280; margin-top: var(--spacing-xs);">Face Down</div>
+
+                                <!-- Face Up Cards Column -->
+                                <div>
+                                    <!-- Level 3 Row -->
+                                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-sm); margin-bottom: var(--spacing-lg);">
+                                        <div style="border: 3px solid #1F2937; border-radius: 12px; padding: var(--spacing-lg); background: white; display: flex; align-items: center; justify-content: center; min-height: 140px; font-size: 3rem; font-weight: 700; color: #14B8A6;">3</div>
+                                        <div style="border: 3px solid #1F2937; border-radius: 12px; padding: var(--spacing-lg); background: white; display: flex; align-items: center; justify-content: center; min-height: 140px; font-size: 3rem; font-weight: 700; color: #14B8A6;">3</div>
+                                        <div style="border: 3px solid #1F2937; border-radius: 12px; padding: var(--spacing-lg); background: white; display: flex; align-items: center; justify-content: center; min-height: 140px; font-size: 3rem; font-weight: 700; color: #14B8A6;">3</div>
+                                        <div style="border: 3px solid #1F2937; border-radius: 12px; padding: var(--spacing-lg); background: white; display: flex; align-items: center; justify-content: center; min-height: 140px; font-size: 3rem; font-weight: 700; color: #14B8A6;">3</div>
                                     </div>
-                                    <div class="card-slots">
-                                        <div class="card-slot">
-                                            <img src="images/cards/level2-example-a.jpg" alt="Level 2 Card" style="width: 100%; height: auto; border-radius: 6px;">
-                                        </div>
-                                        <div class="card-slot">
-                                            <img src="images/cards/level2-example-b.jpg" alt="Level 2 Card" style="width: 100%; height: auto; border-radius: 6px;">
-                                        </div>
-                                        <div class="card-slot">
-                                            <img src="images/cards/level2-example-b.jpg" alt="Level 2 Card" style="width: 100%; height: auto; border-radius: 6px;">
-                                        </div>
-                                        <div class="card-slot">
-                                            <img src="images/cards/level2-example-a.jpg" alt="Level 2 Card" style="width: 100%; height: auto; border-radius: 6px;">
-                                        </div>
+                                    <!-- Level 2 Row -->
+                                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-sm); margin-bottom: var(--spacing-lg);">
+                                        <div style="border: 3px solid #1F2937; border-radius: 12px; padding: var(--spacing-lg); background: white; display: flex; align-items: center; justify-content: center; min-height: 140px; font-size: 3rem; font-weight: 700; color: #06B6D4;">2</div>
+                                        <div style="border: 3px solid #1F2937; border-radius: 12px; padding: var(--spacing-lg); background: white; display: flex; align-items: center; justify-content: center; min-height: 140px; font-size: 3rem; font-weight: 700; color: #06B6D4;">2</div>
+                                        <div style="border: 3px solid #1F2937; border-radius: 12px; padding: var(--spacing-lg); background: white; display: flex; align-items: center; justify-content: center; min-height: 140px; font-size: 3rem; font-weight: 700; color: #06B6D4;">2</div>
+                                        <div style="border: 3px solid #1F2937; border-radius: 12px; padding: var(--spacing-lg); background: white; display: flex; align-items: center; justify-content: center; min-height: 140px; font-size: 3rem; font-weight: 700; color: #06B6D4;">3</div>
                                     </div>
+                                    <!-- Level 1 Row -->
+                                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-sm);">
+                                        <div style="border: 3px solid #1F2937; border-radius: 12px; padding: var(--spacing-lg); background: white; display: flex; align-items: center; justify-content: center; min-height: 140px; font-size: 3rem; font-weight: 700; color: #E07A5F;">1</div>
+                                        <div style="border: 3px solid #1F2937; border-radius: 12px; padding: var(--spacing-lg); background: white; display: flex; align-items: center; justify-content: center; min-height: 140px; font-size: 3rem; font-weight: 700; color: #E07A5F;">1</div>
+                                        <div style="border: 3px solid #1F2937; border-radius: 12px; padding: var(--spacing-lg); background: white; display: flex; align-items: center; justify-content: center; min-height: 140px; font-size: 3rem; font-weight: 700; color: #E07A5F;">1</div>
+                                        <div style="border: 3px solid #1F2937; border-radius: 12px; padding: var(--spacing-lg); background: white; display: flex; align-items: center; justify-content: center; min-height: 140px; font-size: 3rem; font-weight: 700; color: #E07A5F;">1</div>
+                                    </div>
+                                    <div style="text-align: center; margin-top: var(--spacing-lg); font-size: 1.25rem; font-weight: 600; color: var(--color-navy);">Face Up</div>
                                 </div>
-                                <div class="diagram-row">
-                                    <div style="text-align: center; padding: var(--spacing-md);">
-                                        <div style="font-weight: 600; color: #E07A5F; margin-bottom: var(--spacing-xs); font-size: 0.875rem;">LEVEL 1</div>
-                                        <div class="deck-placeholder deck-level1">
-                                            <img src="images/backs/level1-back.jpg" alt="Level 1 Deck (Face Down)" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                                        </div>
-                                        <div style="font-size: 0.75rem; color: #6B7280; margin-top: var(--spacing-xs);">Face Down</div>
-                                    </div>
-                                    <div class="card-slots">
-                                        <div class="card-slot">
-                                            <img src="images/cards/level1-example-a.jpg" alt="Level 1 Card" style="width: 100%; height: auto; border-radius: 6px;">
-                                        </div>
-                                        <div class="card-slot">
-                                            <img src="images/cards/level1-example-b.jpg" alt="Level 1 Card" style="width: 100%; height: auto; border-radius: 6px;">
-                                        </div>
-                                        <div class="card-slot">
-                                            <img src="images/cards/level1-example-c.jpg" alt="Level 1 Card" style="width: 100%; height: auto; border-radius: 6px;">
-                                        </div>
-                                        <div class="card-slot">
-                                            <img src="images/cards/level1-example-a.jpg" alt="Level 1 Card" style="width: 100%; height: auto; border-radius: 6px;">
-                                        </div>
-                                    </div>
+
+                                <!-- Tokens Column -->
+                                <div style="display: flex; flex-direction: column; gap: var(--spacing-md); align-items: center; justify-content: center;">
+                                    <div style="width: 70px; height: 70px; border: 3px solid #1F2937; border-radius: 50%; background: white;"></div>
+                                    <div style="width: 70px; height: 70px; border: 3px solid #1F2937; border-radius: 50%; background: white;"></div>
+                                    <div style="width: 70px; height: 70px; border: 3px solid #1F2937; border-radius: 50%; background: white;"></div>
+                                    <div style="width: 70px; height: 70px; border: 3px solid #1F2937; border-radius: 50%; background: white;"></div>
+                                    <div style="width: 70px; height: 70px; border: 3px solid #1F2937; border-radius: 50%; background: white;"></div>
+                                    <div style="width: 70px; height: 70px; border: 3px solid #1F2937; border-radius: 50%; background: white;"></div>
+                                    <div style="text-align: center; margin-top: var(--spacing-md); font-size: 1rem; font-weight: 600; color: var(--color-navy);">Tokens</div>
                                 </div>
-                            </div>
-                            <div style="margin-top: var(--spacing-xl); padding-top: var(--spacing-lg); border-top: 2px dashed #6B7280;">
-                                <h5 style="text-align: center; margin-bottom: var(--spacing-md); color: var(--color-navy);">Common Token Supply</h5>
-                                <div class="tokens-area">
-                                    <img src="images/tokens/volunteers.png" alt="Volunteers" title="Volunteers" style="width: 48px; height: 48px;">
-                                    <img src="images/tokens/knowledge.png" alt="Knowledge" title="Knowledge" style="width: 48px; height: 48px;">
-                                    <img src="images/tokens/funding.png" alt="Funding" title="Funding" style="width: 48px; height: 48px;">
-                                    <img src="images/tokens/materials.png" alt="Materials" title="Materials" style="width: 48px; height: 48px;">
-                                    <img src="images/tokens/political-will.png" alt="Political Will" title="Political Will" style="width: 48px; height: 48px;">
-                                    <img src="images/tokens/wild-aid.png" alt="Wild Aid" title="Wild Aid" style="width: 48px; height: 48px;">
-                                </div>
-                                <p style="text-align: center; margin-top: var(--spacing-md); color: #6B7280; font-size: 0.875rem;">Place tokens in center of table, accessible to all players</p>
                             </div>
                         </div>
                     </div>
