@@ -102,9 +102,17 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
 .hero-actions { display: flex; flex-direction: column; gap: var(--spacing-md); justify-content: center; margin-top: var(--spacing-2xl); }
 @media (min-width: 768px) { .hero-title { font-size: 4.5rem; } .hero-actions { flex-direction: row; } }
 
-.btn-hero { font-size: 1.25rem; padding: var(--spacing-lg) var(--spacing-2xl); font-weight: 700; box-shadow: var(--shadow-xl); transition: all var(--transition-fast); }
-.btn-hero:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-.btn-hero svg { width: 24px; height: 24px; }
+.btn-hero { font-size: 0.875rem; padding: calc(var(--spacing-md) * 0.7) calc(var(--spacing-lg) * 0.7); font-weight: 700; box-shadow: 0 4px 0 rgba(0,0,0,0.3); transition: all var(--transition-fast); border: 3px solid; position: relative; }
+.btn-hero:hover { transform: translateY(-2px); box-shadow: 0 6px 0 rgba(0,0,0,0.3); }
+.btn-hero:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0,0,0,0.3); }
+.btn-hero svg { width: 18px; height: 18px; }
+
+.btn-hero-about { background: #E07A5F; border-color: #C85A3F; color: white; }
+.btn-hero-about:hover { background: #D66A4F; }
+.btn-hero-learn { background: #F4A261; border-color: #D68241; color: white; }
+.btn-hero-learn:hover { background: #E49251; }
+.btn-hero-score { background: #2A9D8F; border-color: #1A7D6F; color: white; }
+.btn-hero-score:hover { background: #1A8D7F; }
 
 /* Tokens Section */
 .tokens-section { padding: var(--spacing-3xl) 0; background: var(--color-gray-50); }
