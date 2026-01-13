@@ -242,9 +242,9 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
 .role-detail-card .trade-power { background: var(--color-white); padding: var(--spacing-md); border-radius: var(--radius-md); border: 1px solid var(--color-gray-200); margin-top: var(--spacing-md); }
 .role-detail-card .trade-power strong { color: var(--color-coral); }
 
-.info-box { background: var(--color-navy); color: var(--color-white); padding: var(--spacing-lg); border-radius: var(--radius-lg); margin: var(--spacing-lg) 0; }
-.info-box h4 { color: var(--color-white); margin-top: 0; margin-bottom: var(--spacing-md); }
-.info-box ul, .info-box p { color: var(--color-gray-200); }
+.info-box-dark { background: var(--color-navy); color: var(--color-white); padding: var(--spacing-lg); border-radius: var(--radius-lg); margin: var(--spacing-lg) 0; }
+.info-box-dark h4 { color: var(--color-white); margin-top: 0; margin-bottom: var(--spacing-md); }
+.info-box-dark ul, .info-box-dark p { color: var(--color-gray-200); }
 
 .goals-grid { display: grid; gap: var(--spacing-md); margin: var(--spacing-lg) 0; }
 @media (min-width: 768px) { .goals-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -312,7 +312,7 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
 .info-box p { margin: 0 0 var(--spacing-md) 0; color: #1E40AF; line-height: 1.6; }
 .info-box p:last-child { margin-bottom: 0; }
 .info-box ul { margin: var(--spacing-md) 0; padding-left: var(--spacing-xl); color: #1E40AF; }
-.info-box li { margin: var(--spacing-sm) 0; line-height: 1.6; }
+.info-box li { margin: var(--spacing-sm) 0; line-height: 1.6; color: #1E40AF; }
 .info-box em { color: #1E3A8A; font-style: italic; }
 
 /* Outcome Display */
