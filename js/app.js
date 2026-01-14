@@ -216,107 +216,184 @@ function initTabs() {
     });
 }
 
-// Target calculation
+// =====================================================
+// PURE CALCULATION FUNCTIONS (No DOM side effects)
+// =====================================================
+
+/**
+ * Calculate target score from hazards
+ * @param {Array} hazards - Array of hazard modifier values
+ * @returns {Object} { base, hazardTotal, target, breakdown }
+ */
+function calculateTarget(hazards) {
+    const base = 56;
+    const hazardTotal = hazards.reduce((sum, value) => sum + (parseInt(value) || 0), 0);
+    const target = base + hazardTotal;
+    const breakdown = `${base} + ${hazardTotal} =`;
+
+    return { base, hazardTotal, target, breakdown };
+}
+
+/**
+ * Check win condition
+ * @param {number} teamTotal - Total team score
+ * @param {number} target - Target score to beat
+ * @returns {Object} { isWin, teamTotal, target, margin, message }
+ */
+function checkWinCondition(teamTotal, target) {
+    const isWin = teamTotal >= target;
+    const margin = teamTotal - target;
+
+    let message;
+    if (isWin) {
+        message = `<p><strong>✓ Success!</strong></p>
+                   <p>Your community has built sufficient resilience to withstand the selected hazards. You scored ${teamTotal} points and needed ${target} to succeed.</p>`;
+    } else {
+        const shortfall = target - teamTotal;
+        message = `<p><strong>Close!</strong></p>
+                   <p>Your community came close but did not build sufficient resilience to fully withstand the selected hazards. You scored ${teamTotal} points but needed ${target}. You were ${shortfall} points short.</p>`;
+    }
+
+    return { isWin, teamTotal, target, margin, message };
+}
+
+/**
+ * Build complete game score object
+ * @param {Array} players - Player data with roles and points
+ * @param {Object} targetData - Target calculation result
+ * @param {number} goalsCount - Number of goals achieved
+ * @param {string} displayName - Optional team name
+ * @returns {Object} Complete game score
+ */
+function buildGameScore(players, targetData, goalsCount, displayName = null) {
+    const projectTotal = players.reduce((sum, p) => sum + p.total, 0);
+    const goalsTotal = goalsCount * 6;
+    const teamTotal = projectTotal + goalsTotal;
+    const winResult = checkWinCondition(teamTotal, targetData.target);
+
+    return {
+        display_name: displayName,
+        team_score: teamTotal,
+        target_score: targetData.target,
+        is_win: winResult.isWin,
+        goals_achieved: goalsCount,
+        players: players,
+        hazards: targetData,
+        created_at: new Date().toISOString()
+    };
+}
+
+// =====================================================
+// DOM INTERACTION FUNCTIONS
+// =====================================================
+
+// Target calculation with DOM
 function initTargetCalculation() {
-    const baseTarget = document.getElementById('baseTarget');
     const finalTarget = document.getElementById('finalTarget');
     const targetBreakdown = document.getElementById('targetBreakdown');
     const hazardSelects = document.querySelectorAll('.hazard-select');
 
-    function calculateTarget() {
-        const base = parseInt(baseTarget.value) || 56;
-        let totalModifier = 0;
+    function updateTargetDisplay() {
+        // Gather hazard values
+        const hazards = Array.from(hazardSelects).map(select => select.value);
 
-        // Sum up all hazard modifiers from dropdowns
-        hazardSelects.forEach(select => {
-            const value = parseInt(select.value) || 0;
-            totalModifier += value;
-        });
+        // Calculate (pure function)
+        const result = calculateTarget(hazards);
 
-        const total = base + totalModifier;
-        console.log(`Target calculation: Base(${base}) + Hazards(${totalModifier}) = ${total}`);
+        console.log(`Target calculation: Base(${result.base}) + Hazards(${result.hazardTotal}) = ${result.target}`);
 
-        // Update final target (now a span, not an input)
+        // Render to DOM
         if (finalTarget) {
-            finalTarget.textContent = total;
-            // Add pulse effect
+            finalTarget.textContent = result.target;
             finalTarget.style.transform = 'scale(1.1)';
             setTimeout(() => {
                 finalTarget.style.transform = 'scale(1)';
             }, 300);
         }
 
-        // Update breakdown display with animation
         if (targetBreakdown) {
-            targetBreakdown.textContent = `${base} + ${totalModifier} =`;
-            // Add pulse effect
+            targetBreakdown.textContent = result.breakdown;
             targetBreakdown.style.transform = 'scale(1.1)';
             setTimeout(() => {
                 targetBreakdown.style.transform = 'scale(1)';
             }, 300);
         }
 
-        updateWinLossAuto();
+        updateWinLossDisplay();
     }
 
-    // Add event listeners to all hazard dropdowns
+    // Add event listeners
     hazardSelects.forEach(select => {
-        select.addEventListener('change', calculateTarget);
+        select.addEventListener('change', updateTargetDisplay);
     });
 
     // Initial calculation
-    calculateTarget();
+    updateTargetDisplay();
 }
 
 // Scoring table calculations
 function initScoringTable() {
     const table = document.querySelector('.scoring-table');
     if (!table) return;
-    
+
     const inputs = table.querySelectorAll('input[type="number"]');
-    
+
     inputs.forEach(input => {
-        input.addEventListener('input', calculateTotals);
+        input.addEventListener('input', updateAllTotals);
     });
-    
-    calculateTotals();
+
+    updateAllTotals();
 }
 
-function calculateTotals() {
-    let teamTotal = 0;
-    let projectTotal = 0;
-
-    // Calculate total from checked goals
-    const checkedGoals = document.querySelectorAll('.goal-checkbox:checked');
-    const goalsTotal = checkedGoals.length * 6;
-    console.log('Goals calculation:', checkedGoals.length, 'goals ×', 6, '=', goalsTotal, 'points');
-
+function updateAllTotals() {
+    // Gather player data
+    const players = [];
     for (let row = 1; row <= 4; row++) {
         const level1 = parseInt(document.querySelector(`.level1-pts[data-row="${row}"]`)?.value) || 0;
         const level2 = parseInt(document.querySelector(`.level2-pts[data-row="${row}"]`)?.value) || 0;
         const level3 = parseInt(document.querySelector(`.level3-pts[data-row="${row}"]`)?.value) || 0;
+        const role = document.querySelector(`.player-role[data-row="${row}"]`)?.value || '';
 
         const rowTotal = level1 + level2 + level3;
-        console.log(`Row ${row}: L1(${level1}) + L2(${level2}) + L3(${level3}) = ${rowTotal}`);
+        console.log(`Row ${row} (${role || 'No role'}): L1(${level1}) + L2(${level2}) + L3(${level3}) = ${rowTotal}`);
 
+        // Update row total display
         const rowTotalEl = document.querySelector(`.row-total[data-row="${row}"]`);
         if (rowTotalEl) rowTotalEl.textContent = rowTotal;
 
-        projectTotal += rowTotal;
+        players.push({
+            row,
+            role,
+            level1,
+            level2,
+            level3,
+            total: rowTotal
+        });
     }
 
-    // Add goals to team total
-    teamTotal = projectTotal + goalsTotal;
-    console.log('Final calculation: Projects(', projectTotal, ') + Goals(', goalsTotal, ') =', teamTotal);
+    // Calculate project total
+    const projectTotal = players.reduce((sum, p) => sum + p.total, 0);
 
+    // Calculate goals total
+    const checkedGoals = document.querySelectorAll('.goal-checkbox:checked');
+    const goalsCount = checkedGoals.length;
+    const goalsTotal = goalsCount * 6;
+    console.log(`Goals: ${goalsCount} goals × 6 = ${goalsTotal} points`);
+
+    // Calculate team total
+    const teamTotal = projectTotal + goalsTotal;
+    console.log(`Team Total: Projects(${projectTotal}) + Goals(${goalsTotal}) = ${teamTotal}`);
+
+    // Update team total display
     const teamTotalEl = document.getElementById('teamTotal');
     if (teamTotalEl) teamTotalEl.textContent = teamTotal;
 
-    updateWinLossAuto();
+    // Update win/loss display
+    updateWinLossDisplay();
 }
 
-// Auto-determine win/loss and update outcome display
-function updateWinLossAuto() {
+// Update win/loss outcome display
+function updateWinLossDisplay() {
     const teamTotal = parseInt(document.getElementById('teamTotal')?.textContent) || 0;
     const finalTarget = parseInt(document.getElementById('finalTarget')?.textContent) || 56;
 
@@ -326,38 +403,30 @@ function updateWinLossAuto() {
     const outcomeDifference = document.getElementById('outcomeDifference');
     const outcomeResult = document.getElementById('outcomeResult');
 
-    // Update outcome display values
+    // Use pure function to check win condition
+    const result = checkWinCondition(teamTotal, finalTarget);
+
+    console.log(`Win Check: Team(${teamTotal}) vs Target(${finalTarget}) = ${result.isWin ? 'WIN' : 'LOSS'} (margin: ${result.margin})`);
+
+    // Update outcome display
     if (outcomeTarget) outcomeTarget.textContent = finalTarget;
     if (outcomeScore) outcomeScore.textContent = teamTotal;
-
-    const difference = teamTotal - finalTarget;
     if (outcomeDifference) {
-        outcomeDifference.textContent = (difference >= 0 ? '+' : '') + difference;
+        outcomeDifference.textContent = (result.margin >= 0 ? '+' : '') + result.margin;
     }
 
     // Update result message
-    if (outcomeResult && teamTotal > 0) {
-        outcomeResult.classList.remove('win', 'loss');
+    if (outcomeResult) {
+        if (teamTotal > 0) {
+            outcomeResult.classList.remove('win', 'loss');
+            outcomeResult.classList.add(result.isWin ? 'win' : 'loss');
+            outcomeResult.innerHTML = result.message;
 
-        if (teamTotal >= finalTarget) {
-            outcomeResult.classList.add('win');
-            outcomeResult.innerHTML = `
-                <p><strong>✓ Success!</strong></p>
-                <p>Your community has built sufficient resilience to withstand the selected hazards. You scored ${teamTotal} points and needed ${finalTarget} to succeed.</p>
-            `;
-            if (gameResult) gameResult.value = 'win';
+            if (gameResult) gameResult.value = result.isWin ? 'win' : 'loss';
         } else {
-            outcomeResult.classList.add('loss');
-            const shortfall = finalTarget - teamTotal;
-            outcomeResult.innerHTML = `
-                <p><strong>Close!</strong></p>
-                <p>Your community came close but did not build sufficient resilience to fully withstand the selected hazards. You scored ${teamTotal} points but needed ${finalTarget}. You were ${shortfall} points short.</p>
-            `;
-            if (gameResult) gameResult.value = 'loss';
+            outcomeResult.classList.remove('win', 'loss');
+            outcomeResult.innerHTML = '<p>Enter your scores above to see the result.</p>';
         }
-    } else if (outcomeResult && teamTotal === 0) {
-        outcomeResult.classList.remove('win', 'loss');
-        outcomeResult.innerHTML = '<p>Enter your scores above to see the result.</p>';
     }
 }
 
@@ -370,7 +439,7 @@ function initGoalCards() {
             const card = this.closest('.score-goal-card');
             card.classList.toggle('achieved', this.checked);
             // Recalculate totals when goals are checked/unchecked
-            calculateTotals();
+            updateAllTotals();
         });
     });
 }
@@ -457,39 +526,67 @@ function initFormSubmission() {
 // Save score
 async function saveScore() {
     const optIn = document.getElementById('optInLeaderboard').checked;
-    
-    // Gather data
+
+    // Gather player data
+    const players = [];
+    for (let row = 1; row <= 4; row++) {
+        const level1 = parseInt(document.querySelector(`.level1-pts[data-row="${row}"]`)?.value) || 0;
+        const level2 = parseInt(document.querySelector(`.level2-pts[data-row="${row}"]`)?.value) || 0;
+        const level3 = parseInt(document.querySelector(`.level3-pts[data-row="${row}"]`)?.value) || 0;
+        const role = document.querySelector(`.player-role[data-row="${row}"]`)?.value || '';
+
+        players.push({
+            row,
+            role,
+            level1,
+            level2,
+            level3,
+            total: level1 + level2 + level3
+        });
+    }
+
+    // Gather hazard data
+    const hazardSelects = document.querySelectorAll('.hazard-select');
+    const hazards = Array.from(hazardSelects).map(select => select.value);
+    const targetData = calculateTarget(hazards);
+
+    // Count goals
+    const goalsCount = document.querySelectorAll('.goal-checkbox:checked').length;
+
+    // Get display name if opted in
+    const displayName = optIn ? document.getElementById('displayName').value || 'Anonymous Team' : null;
+
+    // Build complete game score using pure function
+    const gameScore = buildGameScore(players, targetData, goalsCount, displayName);
+
+    console.log('Game Score Object:', gameScore);
+
+    // Prepare data for database (flatter structure for compatibility)
     const data = {
-        display_name: optIn ? document.getElementById('displayName').value || 'Anonymous Team' : null,
-        team_score: parseInt(document.getElementById('teamTotal').textContent) || 0,
-        target_score: parseInt(document.getElementById('finalTarget').value) || 56,
-        is_win: document.getElementById('gameResult').value === 'win',
-        goals_achieved: document.querySelectorAll('.goal-checkbox:checked').length,
-        created_at: new Date().toISOString()
+        display_name: gameScore.display_name,
+        team_score: gameScore.team_score,
+        target_score: gameScore.target_score,
+        is_win: gameScore.is_win,
+        goals_achieved: gameScore.goals_achieved,
+        roles_played: players.filter(p => p.role).map(p => p.role),
+        created_at: gameScore.created_at
     };
-    
-    // Gather roles played
-    const roles = [];
-    document.querySelectorAll('.player-role').forEach(select => {
-        if (select.value) roles.push(select.value);
-    });
-    data.roles_played = roles;
-    
+
     // If not opted in, just show success message
     if (!optIn) {
         showSuccessMessage();
         return;
     }
-    
+
     // Try to save to Supabase
     if (supabase) {
         try {
             const { error } = await supabase
                 .from('scores')
                 .insert([data]);
-            
+
             if (error) throw error;
-            
+
             showSuccessMessage();
             loadLeaderboards();
         } catch (error) {
