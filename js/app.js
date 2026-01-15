@@ -31,16 +31,18 @@ function initSupabase() {
 // NAVIGATION
 // =====================================================
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded');
+
     // Mobile navigation toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
-    
+
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', function() {
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-        
+
         // Close menu when clicking a link
         navMenu.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
@@ -51,11 +53,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Initialize page-specific functionality
-    if (document.querySelector('.rules-content')) {
+    const rulesContent = document.querySelector('.rules-content');
+    const scorePage = document.querySelector('.score-page');
+
+    console.log('Rules content found:', !!rulesContent);
+    console.log('Score page found:', !!scorePage);
+
+    if (rulesContent) {
         initRulesPage();
     }
-    
-    if (document.querySelector('.score-page')) {
+
+    if (scorePage) {
+        console.log('Initializing score page...');
         initScorePage();
     }
 });
@@ -182,6 +191,7 @@ function removeHighlights(element) {
 // SCORE PAGE
 // =====================================================
 function initScorePage() {
+    console.log('===== SCORE PAGE INITIALIZATION STARTED =====');
     initSupabase();
     initTabs();
     initInstructionsAccordion();
@@ -193,6 +203,7 @@ function initScorePage() {
     initDebrief();
     initFormSubmission();
     loadLeaderboards();
+    console.log('===== SCORE PAGE INITIALIZATION COMPLETE =====');
 }
 
 // Tab switching
