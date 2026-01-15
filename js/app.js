@@ -9,13 +9,13 @@
 const SUPABASE_URL = 'YOUR_SUPABASE_URL';
 const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
 
-let supabase = null;
+let supabaseClient = null;
 
 // Initialize Supabase client if credentials are set
 function initSupabase() {
     if (SUPABASE_URL !== 'YOUR_SUPABASE_URL' && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY') {
         try {
-            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
             console.log('Supabase initialized successfully');
             return true;
         } catch (error) {
@@ -628,9 +628,9 @@ async function saveScore() {
     }
 
     // Try to save to Supabase
-    if (supabase) {
+    if (supabaseClient) {
         try {
-            const { error } = await supabase
+            const { error } = await supabaseClient
                 .from('scores')
                 .insert([data]);
 
@@ -671,9 +671,9 @@ async function loadLeaderboards() {
     let scores = [];
     
     // Try Supabase first
-    if (supabase) {
+    if (supabaseClient) {
         try {
-            const { data, error } = await supabase
+            const { data, error } = await supabaseClient
                 .from('scores')
                 .select('*')
                 .not('display_name', 'is', null)
