@@ -1303,4 +1303,166 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
     margin-top: var(--spacing-xl);
 }
 
+/* Instructions Accordion Section */
+.instructions-section {
+    background: var(--color-light-blue);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.instructions-section h2 {
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-lg);
+}
+
+.instructions-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.accordion-item {
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    overflow: hidden;
+}
+
+.accordion-header-btn {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--color-white);
+    border: none;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background var(--transition-fast);
+}
+
+.accordion-header-btn:hover {
+    background: var(--color-gray-50);
+}
+
+.accordion-header-btn.active {
+    background: var(--color-gray-100);
+}
+
+.accordion-icon {
+    transition: transform var(--transition-fast);
+}
+
+.accordion-header-btn.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-normal);
+}
+
+.accordion-content.active {
+    max-height: 2000px;
+}
+
+.accordion-body {
+    padding: var(--spacing-md) var(--spacing-lg);
+    color: var(--color-gray-700);
+}
+
+.accordion-body ul {
+    margin: var(--spacing-sm) 0;
+    padding-left: var(--spacing-xl);
+}
+
+.accordion-body li {
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Unified Scoring Section */
+.unified-scoring-section {
+    background: var(--color-white);
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+}
+
+.unified-scoring-section > h2 {
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+}
+
+/* Hazards Subsection */
+.hazards-subsection {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.hazards-subsection h3 {
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Prominent Target Display */
+.target-display-prominent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+    background: #FEF3C7;
+    border: 3px solid #F59E0B;
+    border-radius: var(--radius-lg);
+    margin: var(--spacing-2xl) 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #92400E;
+}
+
+.target-display-prominent .target-value {
+    font-size: 2rem;
+    color: #92400E;
+}
+
+/* Projects Subsection */
+.projects-subsection {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.projects-subsection h3 {
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Goals in Table */
+.goals-in-table {
+    padding: var(--spacing-lg) 0;
+}
+
+.goals-in-table h4 {
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-md);
+}
+
+.goals-section-row td {
+    background: var(--color-gray-50);
+    padding: var(--spacing-lg);
+}
+
+/* Goals Total Row */
+.goals-total-row {
+    background: var(--color-gray-100);
+    font-weight: 600;
+}
+
+.goals-total-row td {
+    padding: var(--spacing-md);
+}
+
 /* END OF NEW SCORE PAGE STYLES */

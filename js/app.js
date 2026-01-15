@@ -184,6 +184,7 @@ function removeHighlights(element) {
 function initScorePage() {
     initSupabase();
     initTabs();
+    initInstructionsAccordion();
     initTargetCalculation();
     initScoringTable();
     initGoalCards();
@@ -198,19 +199,44 @@ function initScorePage() {
 function initTabs() {
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
-    
+
     tabBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             const tabId = this.dataset.tab;
-            
+
             tabBtns.forEach(b => b.classList.remove('active'));
             tabContents.forEach(c => c.classList.remove('active'));
-            
+
             this.classList.add('active');
             document.getElementById('tab-' + tabId).classList.add('active');
-            
+
             if (tabId === 'leaderboard') {
                 loadLeaderboards();
+            }
+        });
+    });
+}
+
+// Instructions accordion
+function initInstructionsAccordion() {
+    // Select all .debrief-header buttons in the instructions section
+    const instructionsSection = document.querySelector('.instructions-section');
+    if (!instructionsSection) return;
+
+    const accordionBtns = instructionsSection.querySelectorAll('.debrief-header');
+
+    accordionBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const icon = this.querySelector('.accordion-icon');
+
+            // Toggle active state
+            const isActive = content.classList.contains('active');
+            content.classList.toggle('active');
+
+            // Rotate icon
+            if (icon) {
+                icon.style.transform = isActive ? 'rotate(0)' : 'rotate(180deg)';
             }
         });
     });
