@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Calculations</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        h2 { color: #1D3557; }
+        select, input { margin: 5px; padding: 8px; }
+        .result { font-size: 24px; font-weight: bold; color: #E07A5F; margin: 10px 0; }
+        label { display: block; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Calculation Test Page</h1>
+
+    <div class="section">
+        <h2>1. Hazards → Target</h2>
+        <div>
+            <label>Wildfire: <select class="hazard-select">
+                <option value="0">None</option>
+                <option value="2">Minor (+2)</option>
+                <option value="5">Major (+5)</option>
+            </select></label>
+
+            <label>Flood: <select class="hazard-select">
+                <option value="0">None</option>
+                <option value="2">Minor (+2)</option>
+                <option value="5">Major (+5)</option>
+            </select></label>
+        </div>
+        <div class="result">
+            Target: <span id="finalTarget">56</span>
+            <br><small>Breakdown: <span id="targetBreakdown">56 + 0 =</span></small>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2. Project Cards → Row Totals</h2>
+        <div>
+            <label>Player 1 Level 1: <input type="number" class="level1-pts" data-row="1" value="0" min="0"></label>
+            <label>Player 1 Level 2: <input type="number" class="level2-pts" data-row="1" value="0" min="0"></label>
+            <label>Player 1 Level 3: <input type="number" class="level3-pts" data-row="1" value="0" min="0"></label>
+            <div class="result">Row 1 Total: <span class="row-total" data-row="1">0</span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3. Goals → Goals Total</h2>
+        <div>
+            <label><input type="checkbox" class="goal-checkbox" data-goal="A"> Goal A (6 pts)</label>
+            <label><input type="checkbox" class="goal-checkbox" data-goal="B"> Goal B (6 pts)</label>
+            <label><input type="checkbox" class="goal-checkbox" data-goal="C"> Goal C (6 pts)</label>
+        </div>
+        <div class="result">Goals Total: <span id="goalsTotal">0</span></div>
+    </div>
+
+    <div class="section">
+        <h2>4. Final Team Total</h2>
+        <div class="result">Team Total: <span id="teamTotal">0</span></div>
+    </div>
+
+    <script>
+        // Simple calculation functions
+        function calculateTarget(hazards) {
+            const base = 56;
+            const hazardTotal = hazards.reduce((sum, value) => sum + (parseInt(value) || 0), 0);
+            const target = base + hazardTotal;
+            const breakdown = `${base} + ${hazardTotal} =`;
+            return { base, hazardTotal, target, breakdown };
+        }
+
+        function updateTargetDisplay() {
+            const hazardSelects = document.querySelectorAll('.hazard-select');
+            const hazards = Array.from(hazardSelects).map(select => select.value);
+            const result = calculateTarget(hazards);
+
+            document.getElementById('finalTarget').textContent = result.target;
+            document.getElementById('targetBreakdown').textContent = result.breakdown;
+
+            console.log('Target updated:', result);
+        }
+
+        function updateAllTotals() {
+            // Row total
+            const level1 = parseInt(document.querySelector('.level1-pts[data-row="1"]').value) || 0;
+            const level2 = parseInt(document.querySelector('.level2-pts[data-row="1"]').value) || 0;
+            const level3 = parseInt(document.querySelector('.level3-pts[data-row="1"]').value) || 0;
+            const rowTotal = level1 + level2 + level3;
+            document.querySelector('.row-total[data-row="1"]').textContent = rowTotal;
+
+            // Goals total
+            const checkedGoals = document.querySelectorAll('input.goal-checkbox:checked');
+            const goalsCount = checkedGoals.length;
+            const goalsTotal = goalsCount * 6;
+            document.getElementById('goalsTotal').textContent = goalsTotal;
+
+            // Team total
+            const teamTotal = rowTotal + goalsTotal;
+            document.getElementById('teamTotal').textContent = teamTotal;
+
+            console.log('Totals updated:', { rowTotal, goalsTotal, teamTotal });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hazard listeners
+            document.querySelectorAll('.hazard-select').forEach(select => {
+                select.addEventListener('change', updateTargetDisplay);
+            });
+
+            // Project card listeners
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.addEventListener('input', updateAllTotals);
+            });
+
+            // Goal checkbox listeners
+            document.querySelectorAll('input.goal-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', updateAllTotals);
+            });
+
+            // Initial calculation
+            updateTargetDisplay();
+            updateAllTotals();
+
+            console.log('Test page initialized');
+        });
+    </script>
+</body>
+</html>

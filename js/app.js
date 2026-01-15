@@ -319,6 +319,10 @@ function initTargetCalculation() {
     const targetBreakdown = document.getElementById('targetBreakdown');
     const hazardSelects = document.querySelectorAll('.hazard-select');
 
+    console.log('[initTargetCalculation] Initialized with', hazardSelects.length, 'hazard selects');
+    console.log('[initTargetCalculation] finalTarget element:', finalTarget);
+    console.log('[initTargetCalculation] targetBreakdown element:', targetBreakdown);
+
     function updateTargetDisplay() {
         // Gather hazard values
         const hazards = Array.from(hazardSelects).map(select => select.value);
@@ -360,9 +364,15 @@ function initTargetCalculation() {
 // Scoring table calculations
 function initScoringTable() {
     const table = document.querySelector('.player-table');
-    if (!table) return;
+    console.log('[initScoringTable] Table found:', table);
+
+    if (!table) {
+        console.error('[initScoringTable] NO TABLE FOUND!');
+        return;
+    }
 
     const inputs = table.querySelectorAll('input[type="number"]');
+    console.log('[initScoringTable] Found', inputs.length, 'number inputs');
 
     inputs.forEach(input => {
         input.addEventListener('input', updateAllTotals);
@@ -459,9 +469,11 @@ function updateWinLossDisplay() {
 // Goal card checkboxes
 function initGoalCards() {
     const checkboxes = document.querySelectorAll('input.goal-checkbox[type="checkbox"]');
+    console.log('[initGoalCards] Found', checkboxes.length, 'goal checkboxes');
 
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
+            console.log('[initGoalCards] Checkbox changed:', this.checked);
             const card = this.closest('.score-goal-card');
             card.classList.toggle('achieved', this.checked);
             // Recalculate totals when goals are checked/unchecked
