@@ -333,7 +333,7 @@ function initTargetCalculation() {
 
 // Scoring table calculations
 function initScoringTable() {
-    const table = document.querySelector('.scoring-table');
+    const table = document.querySelector('.player-table');
     if (!table) return;
 
     const inputs = table.querySelectorAll('input[type="number"]');

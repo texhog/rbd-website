@@ -209,8 +209,8 @@
                                 <p style="margin-bottom: 0;"><em>Example: Level 1 (2 pts) + Level 2 (8 pts) + Level 3 (24 pts) = 34 total project points</em></p>
                             </div>
                             <p style="color: #6B7280; margin-bottom: 1rem; margin-top: 1rem;">Enter the total point values from all completed project cards for each player role:</p>
-                            <div class="scoring-table-container">
-                                <table class="scoring-table">
+                            <div class="player-table-container">
+                                <table class="player-table">
                                     <thead>
                                         <tr>
                                             <th>Player Role</th>
@@ -234,10 +234,10 @@
                                                     <option value="Community">Community</option>
                                                 </select>
                                             </td>
-                                            <td><input type="number" class="level1-pts" data-row="1" value="0" min="0"></td>
-                                            <td><input type="number" class="level2-pts" data-row="1" value="0" min="0"></td>
-                                            <td><input type="number" class="level3-pts" data-row="1" value="0" min="0"></td>
-                                            <td class="total-cell"><span class="row-total" data-row="1">0</span></td>
+                                            <td><input type="number" class="level1-pts pts-input" data-row="1" value="0" min="0"></td>
+                                            <td><input type="number" class="level2-pts pts-input" data-row="1" value="0" min="0"></td>
+                                            <td><input type="number" class="level3-pts pts-input" data-row="1" value="0" min="0"></td>
+                                            <td class="total-cell player-total"><span class="row-total" data-row="1">0</span></td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -252,10 +252,10 @@
                                                     <option value="Community">Community</option>
                                                 </select>
                                             </td>
-                                            <td><input type="number" class="level1-pts" data-row="2" value="0" min="0"></td>
-                                            <td><input type="number" class="level2-pts" data-row="2" value="0" min="0"></td>
-                                            <td><input type="number" class="level3-pts" data-row="2" value="0" min="0"></td>
-                                            <td class="total-cell"><span class="row-total" data-row="2">0</span></td>
+                                            <td><input type="number" class="level1-pts pts-input" data-row="2" value="0" min="0"></td>
+                                            <td><input type="number" class="level2-pts pts-input" data-row="2" value="0" min="0"></td>
+                                            <td><input type="number" class="level3-pts pts-input" data-row="2" value="0" min="0"></td>
+                                            <td class="total-cell player-total"><span class="row-total" data-row="2">0</span></td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -270,10 +270,10 @@
                                                     <option value="Community">Community</option>
                                                 </select>
                                             </td>
-                                            <td><input type="number" class="level1-pts" data-row="3" value="0" min="0"></td>
-                                            <td><input type="number" class="level2-pts" data-row="3" value="0" min="0"></td>
-                                            <td><input type="number" class="level3-pts" data-row="3" value="0" min="0"></td>
-                                            <td class="total-cell"><span class="row-total" data-row="3">0</span></td>
+                                            <td><input type="number" class="level1-pts pts-input" data-row="3" value="0" min="0"></td>
+                                            <td><input type="number" class="level2-pts pts-input" data-row="3" value="0" min="0"></td>
+                                            <td><input type="number" class="level3-pts pts-input" data-row="3" value="0" min="0"></td>
+                                            <td class="total-cell player-total"><span class="row-total" data-row="3">0</span></td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -288,10 +288,10 @@
                                                     <option value="Community">Community</option>
                                                 </select>
                                             </td>
-                                            <td><input type="number" class="level1-pts" data-row="4" value="0" min="0"></td>
-                                            <td><input type="number" class="level2-pts" data-row="4" value="0" min="0"></td>
-                                            <td><input type="number" class="level3-pts" data-row="4" value="0" min="0"></td>
-                                            <td class="total-cell"><span class="row-total" data-row="4">0</span></td>
+                                            <td><input type="number" class="level1-pts pts-input" data-row="4" value="0" min="0"></td>
+                                            <td><input type="number" class="level2-pts pts-input" data-row="4" value="0" min="0"></td>
+                                            <td><input type="number" class="level3-pts pts-input" data-row="4" value="0" min="0"></td>
+                                            <td class="total-cell player-total"><span class="row-total" data-row="4">0</span></td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
@@ -348,171 +348,71 @@
                             </div>
                             <p style="color: #6B7280; margin-bottom: 1rem; margin-top: 1rem;">Check off the goals your team achieved:</p>
                             
-                            <div class="score-goals-grid">
+                            <div class="goals-grid">
                                 <div class="score-goal-card" data-goal="A">
-                                    <div class="score-goal-header">
-                                        <label><input type="checkbox" class="goal-checkbox" data-goal="A"> Goal A</label>
-                                        <span class="score-goal-points">6 PTS</span>
-                                    </div>
-                                    <div class="score-goal-body">
-                                        <p class="score-goal-category">Society, Culture & Relationality</p>
-                                        <input type="text" class="score-goal-title-input" placeholder="Short title (optional)">
-                                        <div class="score-goal-cost-section">
-                                            <h5 class="score-goal-cost-label">COST</h5>
-                                            <div class="score-goal-cost">
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/volunteers.png" alt="Volunteers" class="token-icon">
-                                                    <span class="token-count">×3</span>
-                                                </div>
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/knowledge.png" alt="Knowledge" class="token-icon">
-                                                    <span class="token-count">×3</span>
-                                                </div>
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/funding.png" alt="Funding" class="token-icon">
-                                                    <span class="token-count">×3</span>
-                                                </div>
-                                            </div>
+                                    <label class="goal-checkbox">
+                                        <input type="checkbox" class="goal-checkbox" data-goal="A">
+                                        <div class="goal-info">
+                                            <strong>Goal A - Society, Culture & Relationality</strong>
+                                            <span>6 points</span>
                                         </div>
-                                        <p class="score-goal-claim-note">Claimed with completed project bonuses only (not chips in hand)</p>
-                                    </div>
+                                        <span class="goal-pts">6 PTS</span>
+                                    </label>
                                 </div>
 
                                 <div class="score-goal-card" data-goal="B">
-                                    <div class="score-goal-header">
-                                        <label><input type="checkbox" class="goal-checkbox" data-goal="B"> Goal B</label>
-                                        <span class="score-goal-points">6 PTS</span>
-                                    </div>
-                                    <div class="score-goal-body">
-                                        <p class="score-goal-category">Built Environment</p>
-                                        <input type="text" class="score-goal-title-input" placeholder="Short title (optional)">
-                                        <div class="score-goal-cost-section">
-                                            <h5 class="score-goal-cost-label">COST</h5>
-                                            <div class="score-goal-cost">
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/materials.png" alt="Materials" class="token-icon">
-                                                    <span class="token-count">×3</span>
-                                                </div>
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/political-will.png" alt="Political Will" class="token-icon">
-                                                    <span class="token-count">×3</span>
-                                                </div>
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/knowledge.png" alt="Knowledge" class="token-icon">
-                                                    <span class="token-count">×3</span>
-                                                </div>
-                                            </div>
+                                    <label class="goal-checkbox">
+                                        <input type="checkbox" class="goal-checkbox" data-goal="B">
+                                        <div class="goal-info">
+                                            <strong>Goal B - Built Environment</strong>
+                                            <span>6 points</span>
                                         </div>
-                                        <p class="score-goal-claim-note">Claimed with completed project bonuses only (not chips in hand)</p>
-                                    </div>
+                                        <span class="goal-pts">6 PTS</span>
+                                    </label>
                                 </div>
 
                                 <div class="score-goal-card" data-goal="C">
-                                    <div class="score-goal-header">
-                                        <label><input type="checkbox" class="goal-checkbox" data-goal="C"> Goal C</label>
-                                        <span class="score-goal-points">6 PTS</span>
-                                    </div>
-                                    <div class="score-goal-body">
-                                        <p class="score-goal-category">Natural Environment</p>
-                                        <input type="text" class="score-goal-title-input" placeholder="Short title (optional)">
-                                        <div class="score-goal-cost-section">
-                                            <h5 class="score-goal-cost-label">COST</h5>
-                                            <div class="score-goal-cost">
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/volunteers.png" alt="Volunteers" class="token-icon">
-                                                    <span class="token-count">×3</span>
-                                                </div>
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/materials.png" alt="Materials" class="token-icon">
-                                                    <span class="token-count">×3</span>
-                                                </div>
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/political-will.png" alt="Political Will" class="token-icon">
-                                                    <span class="token-count">×3</span>
-                                                </div>
-                                            </div>
+                                    <label class="goal-checkbox">
+                                        <input type="checkbox" class="goal-checkbox" data-goal="C">
+                                        <div class="goal-info">
+                                            <strong>Goal C - Natural Environment</strong>
+                                            <span>6 points</span>
                                         </div>
-                                        <p class="score-goal-claim-note">Claimed with completed project bonuses only (not chips in hand)</p>
-                                    </div>
+                                        <span class="goal-pts">6 PTS</span>
+                                    </label>
                                 </div>
 
                                 <div class="score-goal-card" data-goal="D">
-                                    <div class="score-goal-header">
-                                        <label><input type="checkbox" class="goal-checkbox" data-goal="D"> Goal D</label>
-                                        <span class="score-goal-points">6 PTS</span>
-                                    </div>
-                                    <div class="score-goal-body">
-                                        <p class="score-goal-category">Economy</p>
-                                        <input type="text" class="score-goal-title-input" placeholder="Short title (optional)">
-                                        <div class="score-goal-cost-section">
-                                            <h5 class="score-goal-cost-label">COST</h5>
-                                            <div class="score-goal-cost">
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/funding.png" alt="Funding" class="token-icon">
-                                                    <span class="token-count">×4</span>
-                                                </div>
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/knowledge.png" alt="Knowledge" class="token-icon">
-                                                    <span class="token-count">×4</span>
-                                                </div>
-                                            </div>
+                                    <label class="goal-checkbox">
+                                        <input type="checkbox" class="goal-checkbox" data-goal="D">
+                                        <div class="goal-info">
+                                            <strong>Goal D - Economy</strong>
+                                            <span>6 points</span>
                                         </div>
-                                        <p class="score-goal-claim-note">Claimed with completed project bonuses only (not chips in hand)</p>
-                                    </div>
+                                        <span class="goal-pts">6 PTS</span>
+                                    </label>
                                 </div>
 
                                 <div class="score-goal-card" data-goal="E">
-                                    <div class="score-goal-header">
-                                        <label><input type="checkbox" class="goal-checkbox" data-goal="E"> Goal E</label>
-                                        <span class="score-goal-points">6 PTS</span>
-                                    </div>
-                                    <div class="score-goal-body">
-                                        <p class="score-goal-category">Governance</p>
-                                        <input type="text" class="score-goal-title-input" placeholder="Short title (optional)">
-                                        <div class="score-goal-cost-section">
-                                            <h5 class="score-goal-cost-label">COST</h5>
-                                            <div class="score-goal-cost">
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/volunteers.png" alt="Volunteers" class="token-icon">
-                                                    <span class="token-count">×4</span>
-                                                </div>
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/political-will.png" alt="Political Will" class="token-icon">
-                                                    <span class="token-count">×4</span>
-                                                </div>
-                                            </div>
+                                    <label class="goal-checkbox">
+                                        <input type="checkbox" class="goal-checkbox" data-goal="E">
+                                        <div class="goal-info">
+                                            <strong>Goal E - Governance</strong>
+                                            <span>6 points</span>
                                         </div>
-                                        <p class="score-goal-claim-note">Claimed with completed project bonuses only (not chips in hand)</p>
-                                    </div>
+                                        <span class="goal-pts">6 PTS</span>
+                                    </label>
                                 </div>
 
                                 <div class="score-goal-card" data-goal="F">
-                                    <div class="score-goal-header">
-                                        <label><input type="checkbox" class="goal-checkbox" data-goal="F"> Goal F</label>
-                                        <span class="score-goal-points">6 PTS</span>
-                                    </div>
-                                    <div class="score-goal-body">
-                                        <p class="score-goal-category">Health & Wellbeing</p>
-                                        <input type="text" class="score-goal-title-input" placeholder="Short title (optional)">
-                                        <div class="score-goal-cost-section">
-                                            <h5 class="score-goal-cost-label">COST</h5>
-                                            <div class="score-goal-cost">
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/volunteers.png" alt="Volunteers" class="token-icon">
-                                                    <span class="token-count">×3</span>
-                                                </div>
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/knowledge.png" alt="Knowledge" class="token-icon">
-                                                    <span class="token-count">×3</span>
-                                                </div>
-                                                <div class="token-cost-item">
-                                                    <img src="images/tokens/funding.png" alt="Funding" class="token-icon">
-                                                    <span class="token-count">×3</span>
-                                                </div>
-                                            </div>
+                                    <label class="goal-checkbox">
+                                        <input type="checkbox" class="goal-checkbox" data-goal="F">
+                                        <div class="goal-info">
+                                            <strong>Goal F - Health & Wellbeing</strong>
+                                            <span>6 points</span>
                                         </div>
-                                        <p class="score-goal-claim-note">Claimed with completed project bonuses only (not chips in hand)</p>
-                                    </div>
+                                        <span class="goal-pts">6 PTS</span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -526,22 +426,26 @@
                             </div>
 
                             <!-- Outcome Display -->
-                            <div class="outcome-display" id="outcomeDisplay">
-                                <div class="outcome-comparison">
-                                    <div class="outcome-item">
-                                        <span class="outcome-label">Target to Achieve:</span>
-                                        <span class="outcome-value" id="outcomeTarget">56</span>
+                            <div class="results-section score-section">
+                                <h2>Final Results</h2>
+                                <div class="results-grid">
+                                    <div class="result-row target-row">
+                                        <span class="result-label">Target to Achieve:</span>
+                                        <span class="result-calc"></span>
+                                        <span class="result-value" id="outcomeTarget">56</span>
                                     </div>
-                                    <div class="outcome-item">
-                                        <span class="outcome-label">Your Score:</span>
-                                        <span class="outcome-value" id="outcomeScore">0</span>
+                                    <div class="result-row total-row">
+                                        <span class="result-label">Your Score:</span>
+                                        <span class="result-calc"></span>
+                                        <span class="result-value" id="outcomeScore">0</span>
                                     </div>
-                                    <div class="outcome-item difference">
-                                        <span class="outcome-label">Difference:</span>
-                                        <span class="outcome-value" id="outcomeDifference">-56</span>
+                                    <div class="result-row difference-row">
+                                        <span class="result-label">Difference:</span>
+                                        <span class="result-calc"></span>
+                                        <span class="result-value" id="outcomeDifference">-56</span>
                                     </div>
                                 </div>
-                                <div class="outcome-result" id="outcomeResult">
+                                <div class="game-outcome" id="outcomeResult">
                                     <p>Enter your scores above to see the result.</p>
                                 </div>
                             </div>
