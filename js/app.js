@@ -401,7 +401,7 @@ function updateAllTotals() {
     const projectTotal = players.reduce((sum, p) => sum + p.total, 0);
 
     // Calculate goals total
-    const checkedGoals = document.querySelectorAll('.goal-checkbox:checked');
+    const checkedGoals = document.querySelectorAll('input.goal-checkbox[type="checkbox"]:checked');
     const goalsCount = checkedGoals.length;
     const goalsTotal = goalsCount * 6;
     console.log(`Goals: ${goalsCount} goals × 6 = ${goalsTotal} points`);
@@ -458,7 +458,7 @@ function updateWinLossDisplay() {
 
 // Goal card checkboxes
 function initGoalCards() {
-    const checkboxes = document.querySelectorAll('.goal-checkbox');
+    const checkboxes = document.querySelectorAll('input.goal-checkbox[type="checkbox"]');
 
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
@@ -577,7 +577,7 @@ async function saveScore() {
     const targetData = calculateTarget(hazards);
 
     // Count goals
-    const goalsCount = document.querySelectorAll('.goal-checkbox:checked').length;
+    const goalsCount = document.querySelectorAll('input.goal-checkbox[type="checkbox"]:checked').length;
 
     // Get display name if opted in
     const displayName = optIn ? document.getElementById('displayName').value || 'Anonymous Team' : null;
