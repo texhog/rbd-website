@@ -1667,11 +1667,11 @@ textarea:focus-visible {
   }
 
   .project-cards-grid {
-    min-width: 1100px;
-    transform: scale(0.35);
+    min-width: 900px;
+    transform: scale(0.42);
     transform-origin: top left;
-    width: 286%;
-    margin-bottom: -65%;
+    width: 238%;
+    margin-bottom: -58%;
   }
 
   /* Pre-Game Guide responsive fixes */
