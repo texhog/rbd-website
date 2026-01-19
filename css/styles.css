@@ -930,17 +930,19 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
     background: var(--color-gray-50);
 }
 
+/* Player mat diagram - keep desktop layout on mobile for readability */
 @media (max-width: 768px) {
+    .player-mat-diagram-new {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
     .mat-layout-grid {
-        grid-template-columns: 1fr;
+        min-width: 600px;
     }
 
     .mat-top-row {
-        grid-template-columns: 1fr;
-    }
-
-    .completed-slots {
-        grid-template-columns: repeat(3, 1fr) !important;
+        min-width: auto;
     }
 }
 
