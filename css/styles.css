@@ -1632,4 +1632,38 @@ textarea:focus-visible {
   .accordion-content h4 {
     font-size: 18px !important;
   }
+
+  /* Setup diagram scaling for mobile */
+  .setup-diagram {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .setup-diagram > div {
+    min-width: 900px;
+    transform: scale(0.45);
+    transform-origin: top left;
+    width: 222%;
+    margin-bottom: -55%;
+  }
+
+  /* Pre-Game Guide responsive fixes */
+  .info-box-dark,
+  .info-box {
+    overflow-x: auto !important;
+  }
+
+  /* Community Resilience Goals scoring sheet - mobile layout */
+  .accordion-content > div[style*="grid-template-columns: 1fr 2fr"] {
+    display: block !important;
+  }
+
+  .accordion-content > div[style*="grid-template-columns: 1fr 2fr"] > div {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  /* Goal cards grid - 2 columns on mobile */
+  .accordion-content div[style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
