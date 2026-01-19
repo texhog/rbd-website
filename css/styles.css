@@ -1492,7 +1492,34 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
     font-size: 18px !important;
   }
 
+  .accordion {
+    border: none !important;
+    margin-bottom: var(--spacing-xl) !important;
+  }
+
+  .accordion-header {
+    display: block !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    color: var(--color-navy) !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 0 var(--spacing-md) 0 !important;
+    pointer-events: none !important;
+    text-align: left !important;
+  }
+
+  .accordion-header span {
+    display: block !important;
+  }
+
+  .accordion-icon {
+    display: none !important;
+  }
+
   .accordion-content {
+    display: block !important;
+    padding: 0 !important;
     font-size: 16px !important;
     line-height: 1.8 !important;
   }
@@ -1505,28 +1532,7 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
 
   .accordion-content h4 {
     font-size: 18px !important;
-    margin-top: var(--spacing-md) !important;
-  }
-
-  .accordion-header {
-    font-size: 18px !important;
-    padding: var(--spacing-lg) !important;
-  }
-
-  .accordion {
-    border: none !important;
-  }
-
-  .accordion-content {
-    display: block !important;
-    padding: 0 var(--spacing-lg) var(--spacing-lg) !important;
-  }
-
-  .accordion-header {
-    pointer-events: none !important;
-  }
-
-  .accordion-icon {
-    display: none !important;
+    margin-top: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-md) !important;
   }
 }
