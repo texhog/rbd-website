@@ -1599,6 +1599,19 @@ textarea:focus-visible {
 }
 
 /* =====================================================
+   SCORING SHEET - ALL SCREEN SIZES
+   ===================================================== */
+
+.scoring-sheet-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.scoring-sheet-grid {
+    min-width: 1000px;
+}
+
+/* =====================================================
    MOBILE OPTIMIZATION FIX
    ===================================================== */
 
