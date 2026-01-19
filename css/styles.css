@@ -1468,10 +1468,10 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
 /* END OF NEW SCORE PAGE STYLES */
 
 /* =====================================================
-   LANDSCAPE ORIENTATION FIX
+   MOBILE OPTIMIZATION FIX
    ===================================================== */
 
-@media (orientation: landscape) and (max-height: 480px) {
+@media (max-width: 768px) {
   .search-section {
     position: static !important;
     top: auto !important;
