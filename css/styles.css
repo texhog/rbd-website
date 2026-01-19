@@ -1639,12 +1639,17 @@ textarea:focus-visible {
     -webkit-overflow-scrolling: touch;
   }
 
-  .setup-diagram > div {
-    min-width: 900px;
-    transform: scale(0.45);
+  /* Project Cards diagram - scale entire grid on mobile */
+  .project-cards-diagram {
+    overflow: hidden !important;
+  }
+
+  .project-cards-grid {
+    min-width: 1100px;
+    transform: scale(0.35);
     transform-origin: top left;
-    width: 222%;
-    margin-bottom: -55%;
+    width: 286%;
+    margin-bottom: -65%;
   }
 
   /* Pre-Game Guide responsive fixes */
