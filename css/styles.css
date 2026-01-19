@@ -1652,6 +1652,15 @@ textarea:focus-visible {
     -webkit-overflow-scrolling: touch;
   }
 
+  /* Resource Storage diagram - scales naturally */
+  .resource-storage-diagram {
+    padding: var(--spacing-md) !important;
+  }
+
+  .resource-storage-diagram img {
+    max-width: 100% !important;
+  }
+
   /* Project Cards diagram - scale entire grid on mobile */
   .project-cards-diagram {
     overflow: hidden !important;
