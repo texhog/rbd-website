@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Test</title>
+    <style>
+        .accordion { margin-bottom: 20px; border: 1px solid #ccc; padding: 20px; }
+        .accordion-header { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+        .accordion-content { font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>Debug Test Page</h1>
+    
+    <div class="accordion active">
+        <button class="accordion-header">
+            <span>Test Section</span>
+        </button>
+        <div class="accordion-content">
+            <p>This is test content that should be visible.</p>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        console.log('Page loaded');
+        const accordions = document.querySelectorAll('.accordion');
+        console.log('Found accordions:', accordions.length);
+        accordions.forEach((acc, i) => {
+            console.log(`Accordion ${i}:`, acc);
+            console.log('  - has active class:', acc.classList.contains('active'));
+            const content = acc.querySelector('.accordion-content');
+            console.log('  - content element:', content);
+            console.log('  - content display:', window.getComputedStyle(content).display);
+        });
+    </script>
+</body>
+</html>

@@ -12,7 +12,9 @@
       "Bash(git checkout:*)",
       "Bash(grep:*)",
       "Bash(ls:*)",
-      "Bash(git remote:*)"
+      "Bash(git remote:*)",
+      "Bash(open -a \"Google Chrome\" https://rbdgame.netlify.app/score)",
+      "Bash(curl:*)"
     ]
   }
 }
