@@ -1653,17 +1653,17 @@ textarea:focus-visible {
     overflow-x: auto !important;
   }
 
-  /* Community Resilience Goals scoring sheet - mobile layout */
+  /* Community Resilience Goals scoring sheet - scale on mobile like player mat */
+  .scoring-sheet-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .scoring-sheet-grid {
-    display: block !important;
-  }
-
-  .scoring-sheet-grid > div {
-    margin-bottom: var(--spacing-lg);
-  }
-
-  /* Goal cards grid - 2 columns on mobile */
-  .goal-cards-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    transform: scale(0.45);
+    transform-origin: top left;
+    width: 222%;
+    margin-bottom: -55%;
+    min-width: 900px;
   }
 }
