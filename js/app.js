@@ -78,17 +78,12 @@ function initRulesPage() {
     const searchClear = document.getElementById('searchClear');
     const resultsCount = document.getElementById('searchResultsCount');
     
-    // Accordion toggle - DISABLED (all content always visible)
-    // accordions.forEach(accordion => {
-    //     const header = accordion.querySelector('.accordion-header');
-    //     header.addEventListener('click', () => {
-    //         accordion.classList.toggle('active');
-    //     });
-    // });
-
-    // Make all accordions active by default
+    // Accordion toggle
     accordions.forEach(accordion => {
-        accordion.classList.add('active');
+        const header = accordion.querySelector('.accordion-header');
+        header.addEventListener('click', () => {
+            accordion.classList.toggle('active');
+        });
     });
     
     // Search functionality
