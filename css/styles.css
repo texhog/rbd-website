@@ -1654,16 +1654,16 @@ textarea:focus-visible {
   }
 
   /* Community Resilience Goals scoring sheet - mobile layout */
-  .accordion-content > div[style*="grid-template-columns: 1fr 2fr"] {
+  .scoring-sheet-grid {
     display: block !important;
   }
 
-  .accordion-content > div[style*="grid-template-columns: 1fr 2fr"] > div {
+  .scoring-sheet-grid > div {
     margin-bottom: var(--spacing-lg);
   }
 
   /* Goal cards grid - 2 columns on mobile */
-  .accordion-content div[style*="grid-template-columns: repeat(3, 1fr)"] {
+  .goal-cards-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
