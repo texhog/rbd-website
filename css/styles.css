@@ -1483,7 +1483,12 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
     margin-top: 0 !important;
   }
 
+  .search-input {
+    font-size: 18px !important;
+    padding: 18px var(--spacing-lg) 18px 48px !important;
+  }
+
   input[type="search"], input[type="text"] {
-    font-size: 16px !important;
+    font-size: 18px !important;
   }
 }
