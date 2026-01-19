@@ -10,6 +10,7 @@ const SUPABASE_URL = 'YOUR_SUPABASE_URL';
 const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
 
 let supabaseClient = null;
+let refreshScaledDiagrams = null;
 
 // Initialize Supabase client if credentials are set
 function initSupabase() {
@@ -65,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (rulesContent) {
         initRulesPage();
+        initScaledDiagrams();
     }
 
     if (scorePage) {
@@ -125,6 +127,9 @@ function initRulesPage() {
             // Update ARIA expanded attribute
             const isExpanded = accordion.classList.contains('active');
             header.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+            if (isExpanded && typeof refreshScaledDiagrams === 'function') {
+                requestAnimationFrame(refreshScaledDiagrams);
+            }
         });
     });
     
@@ -179,6 +184,58 @@ function initRulesPage() {
             });
         }
     }
+}
+
+// =====================================================
+// RULES PAGE - SCALE DIAGRAMS TO FIT MOBILE
+// =====================================================
+function initScaledDiagrams() {
+    const diagrams = document.querySelectorAll('[data-scale-to-fit]');
+    if (!diagrams.length) return;
+
+    function applyScale() {
+        diagrams.forEach(diagram => {
+            const container = diagram.parentElement;
+            if (!container) return;
+
+            const containerStyle = getComputedStyle(container);
+            const paddingX = parseFloat(containerStyle.paddingLeft) + parseFloat(containerStyle.paddingRight);
+            const availableWidth = container.clientWidth - paddingX;
+
+            if (availableWidth <= 0) return;
+
+            let baseWidth = parseFloat(diagram.dataset.scaleBaseWidth);
+            let baseHeight = parseFloat(diagram.dataset.scaleBaseHeight);
+
+            if (!baseWidth || !baseHeight) {
+                diagram.style.transform = 'none';
+                diagram.style.marginBottom = '0';
+                diagram.style.width = '';
+
+                if (diagram.offsetWidth === 0 || diagram.offsetHeight === 0) return;
+
+                baseWidth = diagram.scrollWidth;
+                baseHeight = diagram.scrollHeight;
+                diagram.dataset.scaleBaseWidth = baseWidth;
+                diagram.dataset.scaleBaseHeight = baseHeight;
+            }
+
+            const scale = Math.min(1, availableWidth / baseWidth);
+            diagram.style.width = `${baseWidth}px`;
+            diagram.style.transformOrigin = 'top left';
+            diagram.style.transform = `scale(${scale})`;
+            diagram.style.marginBottom = `${-(1 - scale) * baseHeight}px`;
+        });
+    }
+
+    refreshScaledDiagrams = applyScale;
+    applyScale();
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(applyScale, 150);
+    });
 }
 
 function highlightMatches(element, query) {

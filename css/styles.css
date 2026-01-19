@@ -237,6 +237,44 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
 .tokens-area { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); justify-content: center; margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); border-top: 2px dashed var(--color-gray-300); }
 .token-placeholder { width: 40px; height: 40px; border-radius: var(--radius-full); border: 3px solid; }
 
+/* Project cards setup diagram */
+.project-cards-grid {
+    display: grid;
+    grid-template-columns: minmax(120px, 200px) minmax(0, 1fr);
+    gap: var(--spacing-xl);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.project-cards-face-down {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.project-cards-deck {
+    border: 3px solid #1F2937;
+    border-radius: 16px;
+    padding: 12px;
+    background: white;
+    width: 100%;
+    max-width: 150px;
+    margin: 0 auto;
+}
+
+.project-cards-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-sm);
+    width: 100%;
+    max-width: 624px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.project-cards-row--last {
+    margin-bottom: 0;
+}
+
 .role-detail-card { background: var(--color-gray-50); border-radius: var(--radius-lg); padding: var(--spacing-lg); margin-bottom: var(--spacing-md); border-left: 4px solid var(--color-coral); }
 .role-detail-card h4 { margin-bottom: var(--spacing-md); margin-top: 0; display: flex; align-items: center; gap: var(--spacing-sm); flex-wrap: wrap; }
 .role-detail-card .starting-resources { display: inline-flex; gap: var(--spacing-xs); margin-left: var(--spacing-sm); }
@@ -1661,19 +1699,6 @@ textarea:focus-visible {
     max-width: 100% !important;
   }
 
-  /* Project Cards diagram - scale entire grid on mobile */
-  .project-cards-diagram {
-    overflow: hidden !important;
-  }
-
-  .project-cards-grid {
-    min-width: 900px;
-    transform: scale(0.42);
-    transform-origin: top left;
-    width: 238%;
-    margin-bottom: -58%;
-  }
-
   /* Pre-Game Guide responsive fixes */
   .info-box-dark,
   .info-box {
@@ -1687,10 +1712,6 @@ textarea:focus-visible {
   }
 
   .scoring-sheet-grid {
-    transform: scale(0.45);
-    transform-origin: top left;
-    width: 222%;
-    margin-bottom: -55%;
     min-width: 900px;
   }
 }

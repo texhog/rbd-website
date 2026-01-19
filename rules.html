@@ -622,21 +622,21 @@
                         <div class="setup-diagram project-cards-diagram">
                             <h4 style="text-align: center; font-size: 1.75rem; margin-bottom: var(--spacing-xl);">Project Cards</h4>
 
-                            <div class="project-cards-grid" style="display: grid; grid-template-columns: 200px 1fr; gap: var(--spacing-xl); max-width: 900px; margin: 0 auto;">
+                            <div class="project-cards-grid">
                                 <!-- Face Down Column -->
-                                <div style="display: flex; flex-direction: column; gap: var(--spacing-xl);">
+                                <div class="project-cards-face-down">
                                     <!-- Level 3 Deck -->
-                                    <div style="border: 3px solid #1F2937; border-radius: 16px; padding: 12px; background: white; width: 150px; margin: 0 auto;">
+                                    <div class="project-cards-deck">
                                         <img src="images/backs/level3-back.jpg" alt="Level 3 Deck" style="width: 100%; height: auto; border-radius: 8px; display: block;">
                                         <div style="font-size: 2rem; font-weight: 700; color: #14B8A6; text-align: center; margin-top: 8px;">3</div>
                                     </div>
                                     <!-- Level 2 Deck -->
-                                    <div style="border: 3px solid #1F2937; border-radius: 16px; padding: 12px; background: white; width: 150px; margin: 0 auto;">
+                                    <div class="project-cards-deck">
                                         <img src="images/backs/level2-back.jpg" alt="Level 2 Deck" style="width: 100%; height: auto; border-radius: 8px; display: block;">
                                         <div style="font-size: 2rem; font-weight: 700; color: #06B6D4; text-align: center; margin-top: 8px;">2</div>
                                     </div>
                                     <!-- Level 1 Deck -->
-                                    <div style="border: 3px solid #1F2937; border-radius: 16px; padding: 12px; background: white; width: 150px; margin: 0 auto;">
+                                    <div class="project-cards-deck">
                                         <img src="images/backs/level1-back.jpg" alt="Level 1 Deck" style="width: 100%; height: auto; border-radius: 8px; display: block;">
                                         <div style="font-size: 2rem; font-weight: 700; color: #E07A5F; text-align: center; margin-top: 8px;">1</div>
                                     </div>
@@ -646,21 +646,21 @@
                                 <!-- Face Up Cards Column -->
                                 <div>
                                     <!-- Level 3 Row -->
-                                    <div style="display: grid; grid-template-columns: repeat(4, 150px); gap: var(--spacing-sm); margin-bottom: var(--spacing-xl); justify-content: center;">
+                                    <div class="project-cards-row">
                                         <div style="border: 3px solid #1F2937; border-radius: 12px; overflow: hidden;"><img src="images/cards/level3/volunteers-01.jpg" alt="Level 3 Volunteers Project" style="width: 100%; height: auto; display: block;"></div>
                                         <div style="border: 3px solid #1F2937; border-radius: 12px; overflow: hidden;"><img src="images/cards/level3/knowledge-01.jpg" alt="Level 3 Knowledge Project" style="width: 100%; height: auto; display: block;"></div>
                                         <div style="border: 3px solid #1F2937; border-radius: 12px; overflow: hidden;"><img src="images/cards/level3/funding-01.jpg" alt="Level 3 Funding Project" style="width: 100%; height: auto; display: block;"></div>
                                         <div style="border: 3px solid #1F2937; border-radius: 12px; overflow: hidden;"><img src="images/cards/level3/materials-01.jpg" alt="Level 3 Materials Project" style="width: 100%; height: auto; display: block;"></div>
                                     </div>
                                     <!-- Level 2 Row -->
-                                    <div style="display: grid; grid-template-columns: repeat(4, 150px); gap: var(--spacing-sm); margin-bottom: var(--spacing-xl); justify-content: center;">
+                                    <div class="project-cards-row">
                                         <div style="border: 3px solid #1F2937; border-radius: 12px; overflow: hidden;"><img src="images/cards/level2/volunteers-01.jpg" alt="Level 2 Volunteers Project" style="width: 100%; height: auto; display: block;"></div>
                                         <div style="border: 3px solid #1F2937; border-radius: 12px; overflow: hidden;"><img src="images/cards/level2/knowledge-01.jpg" alt="Level 2 Knowledge Project" style="width: 100%; height: auto; display: block;"></div>
                                         <div style="border: 3px solid #1F2937; border-radius: 12px; overflow: hidden;"><img src="images/cards/level2/funding-01.jpg" alt="Level 2 Funding Project" style="width: 100%; height: auto; display: block;"></div>
                                         <div style="border: 3px solid #1F2937; border-radius: 12px; overflow: hidden;"><img src="images/cards/level2/materials-01.jpg" alt="Level 2 Materials Project" style="width: 100%; height: auto; display: block;"></div>
                                     </div>
                                     <!-- Level 1 Row -->
-                                    <div style="display: grid; grid-template-columns: repeat(4, 150px); gap: var(--spacing-sm); justify-content: center;">
+                                    <div class="project-cards-row project-cards-row--last">
                                         <div style="border: 3px solid #1F2937; border-radius: 12px; overflow: hidden;"><img src="images/cards/level1/volunteers-01.jpg" alt="Level 1 Volunteers Project" style="width: 100%; height: auto; display: block;"></div>
                                         <div style="border: 3px solid #1F2937; border-radius: 12px; overflow: hidden;"><img src="images/cards/level1/knowledge-01.jpg" alt="Level 1 Knowledge Project" style="width: 100%; height: auto; display: block;"></div>
                                         <div style="border: 3px solid #1F2937; border-radius: 12px; overflow: hidden;"><img src="images/cards/level1/funding-01.jpg" alt="Level 1 Funding Project" style="width: 100%; height: auto; display: block;"></div>
@@ -674,7 +674,7 @@
 
                         <!-- Community Resilience Goals Scoring Sheet -->
                         <div class="scoring-sheet-container" style="background: #E5E7EB; padding: var(--spacing-xl); border-radius: var(--radius-lg); margin-top: var(--spacing-xl);">
-                            <div class="scoring-sheet-grid" style="display: grid; grid-template-columns: 1fr 2fr; gap: var(--spacing-xl);">
+                            <div class="scoring-sheet-grid" data-scale-to-fit style="display: grid; grid-template-columns: 1fr 2fr; gap: var(--spacing-xl);">
 
                                 <!-- Left Side: Instructions and Scoring Table -->
                                 <div>
