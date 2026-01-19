@@ -1466,6 +1466,139 @@ h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 {
 /* END OF NEW SCORE PAGE STYLES */
 
 /* =====================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ===================================================== */
+
+/* Skip to main content link */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    z-index: 9999;
+    transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+    top: var(--spacing-md);
+    color: var(--color-white);
+    outline: 3px solid var(--color-coral);
+    outline-offset: 2px;
+}
+
+/* Focus indicators for accessibility */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid var(--color-coral);
+    outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--color-coral);
+    outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users (keep for keyboard) */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* =====================================================
+   BACK TO TOP BUTTON
+   ===================================================== */
+
+.back-to-top {
+    position: fixed;
+    bottom: var(--spacing-xl);
+    right: var(--spacing-xl);
+    width: 48px;
+    height: 48px;
+    background: var(--color-coral);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all var(--transition-normal);
+    z-index: 900;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--color-coral-dark);
+    transform: translateY(-4px);
+}
+
+.back-to-top:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: var(--spacing-lg);
+        right: var(--spacing-lg);
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* =====================================================
+   LOADING SPINNER
+   ===================================================== */
+
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-2xl);
+    gap: var(--spacing-md);
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--color-gray-200);
+    border-top-color: var(--color-coral);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-spinner p {
+    color: var(--color-gray-500);
+    font-size: 0.9375rem;
+}
+
+/* =====================================================
    MOBILE OPTIMIZATION FIX
    ===================================================== */
 

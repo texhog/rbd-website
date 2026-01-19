@@ -52,6 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Initialize common functionality
+    initBackToTop();
+    initDynamicYear();
+
     // Initialize page-specific functionality
     const rulesContent = document.querySelector('.rules-content');
     const scorePage = document.querySelector('.score-page');
@@ -70,6 +74,41 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // =====================================================
+// BACK TO TOP BUTTON
+// =====================================================
+function initBackToTop() {
+    const backToTopBtn = document.getElementById('backToTop');
+    if (!backToTopBtn) return;
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+
+    // Scroll to top when clicked
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// =====================================================
+// DYNAMIC COPYRIGHT YEAR
+// =====================================================
+function initDynamicYear() {
+    const yearSpan = document.getElementById('currentYear');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+}
+
+// =====================================================
 // RULES PAGE - ACCORDION & SEARCH
 // =====================================================
 function initRulesPage() {
@@ -83,6 +122,9 @@ function initRulesPage() {
         const header = accordion.querySelector('.accordion-header');
         header.addEventListener('click', () => {
             accordion.classList.toggle('active');
+            // Update ARIA expanded attribute
+            const isExpanded = accordion.classList.contains('active');
+            header.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
         });
     });
     
@@ -668,8 +710,12 @@ function showSuccessMessage() {
 // LEADERBOARDS
 // =====================================================
 async function loadLeaderboards() {
+    // Show loading spinners
+    showLeaderboardLoading('winsLeaderboard');
+    showLeaderboardLoading('scoresLeaderboard');
+
     let scores = [];
-    
+
     // Try Supabase first
     if (supabaseClient) {
         try {
@@ -678,7 +724,7 @@ async function loadLeaderboards() {
                 .select('*')
                 .not('display_name', 'is', null)
                 .order('created_at', { ascending: false });
-            
+
             if (!error && data) {
                 scores = data;
             }
@@ -686,15 +732,29 @@ async function loadLeaderboards() {
             console.error('Error loading from Supabase:', error);
         }
     }
-    
+
     // Fallback to local storage
     if (scores.length === 0) {
         scores = JSON.parse(localStorage.getItem('rbd_scores') || '[]')
             .filter(s => s.display_name);
     }
-    
+
     renderWinsLeaderboard(scores);
     renderScoresLeaderboard(scores);
+}
+
+function showLeaderboardLoading(tableId) {
+    const tbody = document.querySelector(`#${tableId} tbody`);
+    if (tbody) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="5" class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading leaderboard...</p>
+                </td>
+            </tr>
+        `;
+    }
 }
 
 function renderWinsLeaderboard(scores) {

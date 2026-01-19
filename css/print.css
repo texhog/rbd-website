@@ -1,0 +1,209 @@
+/* =====================================================
+   RESILIENCE BY DESIGN - PRINT STYLESHEET
+   For printing the rules page
+   ===================================================== */
+
+/* Hide non-essential elements */
+.navbar,
+.nav-toggle,
+.nav-menu,
+.search-section,
+.footer,
+.back-to-top,
+.skip-link,
+.page-header-actions,
+.btn {
+    display: none !important;
+}
+
+/* Reset body styles */
+body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+}
+
+/* Adjust page header */
+.page-header {
+    background: none !important;
+    padding: 0 0 1rem 0 !important;
+    border-bottom: 2px solid #000;
+    margin-bottom: 1rem;
+}
+
+.page-header h1 {
+    color: #000 !important;
+    font-size: 24pt;
+}
+
+.page-header p {
+    color: #333 !important;
+}
+
+/* Show all accordion content expanded */
+.accordion {
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+}
+
+.accordion-header {
+    background: #f5f5f5 !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 14pt;
+    border-bottom: 1px solid #ccc;
+}
+
+.accordion-icon {
+    display: none !important;
+}
+
+/* Force all accordion content to be visible */
+.accordion-content {
+    display: block !important;
+    max-height: none !important;
+    padding: 1rem !important;
+}
+
+/* Typography adjustments */
+h1, h2, h3, h4, h5, h6 {
+    color: #000 !important;
+    page-break-after: avoid;
+}
+
+h4 {
+    font-size: 12pt;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.25rem;
+}
+
+p, li {
+    color: #000 !important;
+    font-size: 11pt;
+}
+
+/* Links */
+a {
+    color: #000 !important;
+    text-decoration: underline;
+}
+
+a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #666;
+}
+
+/* Tables */
+.rules-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10pt;
+}
+
+.rules-table th,
+.rules-table td {
+    border: 1px solid #000;
+    padding: 0.25rem 0.5rem;
+}
+
+.rules-table th {
+    background: #f5f5f5 !important;
+    color: #000 !important;
+}
+
+/* Info boxes */
+.info-box,
+.info-box-dark {
+    border: 2px solid #000 !important;
+    background: #f9f9f9 !important;
+    padding: 0.5rem !important;
+    margin: 0.5rem 0 !important;
+}
+
+.info-box-dark h4,
+.info-box-dark ul,
+.info-box-dark p,
+.info-box-dark li {
+    color: #000 !important;
+}
+
+/* Role cards */
+.role-detail-card {
+    border: 1px solid #000 !important;
+    background: #f9f9f9 !important;
+    padding: 0.5rem !important;
+    margin-bottom: 0.5rem;
+    page-break-inside: avoid;
+}
+
+/* Token display */
+.tokens-display {
+    display: block !important;
+}
+
+.token-item {
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 0.25rem;
+    border: 1px solid #ccc;
+}
+
+/* Player mat diagram */
+.player-mat-diagram-new {
+    transform: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border: 1px solid #000;
+}
+
+/* Goals grid */
+.goals-grid {
+    display: block !important;
+}
+
+.goal-card-display {
+    display: inline-block;
+    width: 45%;
+    margin: 0.25rem;
+    vertical-align: top;
+    page-break-inside: avoid;
+}
+
+/* Setup diagram */
+.setup-diagram {
+    background: #f9f9f9 !important;
+    border: 1px solid #000 !important;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Page breaks */
+.accordion {
+    page-break-inside: avoid;
+}
+
+/* Container width */
+.container {
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+
+.rules-container {
+    max-width: 100% !important;
+}
+
+/* Footer for print - add page number */
+@page {
+    margin: 1in;
+    @bottom-center {
+        content: "Resilience by Design - Rules";
+    }
+}

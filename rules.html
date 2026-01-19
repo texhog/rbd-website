@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn to Play | Resilience by Design</title>
-    <link rel="stylesheet" href="css/styles.css?v=1000">
+    <link rel="stylesheet" href="css/styles.css?v=1001">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/print.css" media="print">
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
@@ -88,17 +92,17 @@
         </div>
     </section>
 
-    <main class="rules-content">
+    <main class="rules-content" id="main-content">
         <div class="container">
             <div class="rules-container">
 
                 <!-- Get Started -->
                 <div class="accordion active" data-section="get-started">
-                    <button class="accordion-header">
+                    <button class="accordion-header" aria-expanded="true" aria-controls="content-get-started">
                         <span>Get Started</span>
-                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
-                    <div class="accordion-content">
+                    <div class="accordion-content" id="content-get-started">
                         <h4>Tips for Success</h4>
                         <ul>
                             <li>Communicate openly: Share your role's particular strengths with the team. Each role has unique abilities that can benefit everyone.</li>
@@ -111,11 +115,11 @@
 
                 <!-- Game Overview -->
                 <div class="accordion" data-section="overview">
-                    <button class="accordion-header">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="content-overview">
                         <span>Game Overview</span>
-                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
-                    <div class="accordion-content">
+                    <div class="accordion-content" id="content-overview">
                         <p>Resilience by Design is a serious game focused on climate change planning, adaptation, mitigation, and resilience. It blends gameplay with learning to build shared understanding while practicing collaboration, communication, and planning under pressure.</p>
                         
                         <h4>The Workshop Structure</h4>
@@ -145,11 +149,11 @@
 
                 <!-- Game Contents -->
                 <div class="accordion" data-section="contents">
-                    <button class="accordion-header">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="content-contents">
                         <span>Game Contents</span>
-                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
-                    <div class="accordion-content">
+                    <div class="accordion-content" id="content-contents">
                         <h4>Resource Tokens</h4>
                         <p>Colour-coded tokens representing 6 categories of resources:</p>
                         
@@ -264,11 +268,11 @@
 
                 <!-- Pre-Game Setup -->
                 <div class="accordion" data-section="pregame">
-                    <button class="accordion-header">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="content-pregame">
                         <span>Pre-Game Workshop & Setup</span>
-                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
-                    <div class="accordion-content">
+                    <div class="accordion-content" id="content-pregame">
                         <h4>1. Hazard Selection</h4>
                         <p>Select one or more hazards relevant to your region:</p>
                         <ul>
@@ -393,11 +397,11 @@
 
                 <!-- Turn Structure -->
                 <div class="accordion" data-section="turns">
-                    <button class="accordion-header">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="content-turns">
                         <span>Turn Structure</span>
-                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
-                    <div class="accordion-content">
+                    <div class="accordion-content" id="content-turns">
                         <p>Start a 1-hour timer. Choose a first player. Play proceeds clockwise.</p>
                         
                         <h4>On Your Turn (in order):</h4>
@@ -422,11 +426,11 @@
 
                 <!-- Main Actions -->
                 <div class="accordion" data-section="actions">
-                    <button class="accordion-header">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="content-actions">
                         <span>Main Actions</span>
-                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
-                    <div class="accordion-content">
+                    <div class="accordion-content" id="content-actions">
                         <p>On your turn, choose exactly one of these main actions:</p>
 
                         <h4>1. Take Resources</h4>
@@ -503,11 +507,11 @@
 
                 <!-- Player Roles -->
                 <div class="accordion" data-section="player-roles" id="player-roles">
-                    <button class="accordion-header">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="content-player-roles">
                         <span>Player Roles (7 Available)</span>
-                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
-                    <div class="accordion-content">
+                    <div class="accordion-content" id="content-player-roles">
                         <p>Choose 4 of 7 available stations to sit at the table. Each station has unique abilities. One or more people may share a station and act as a team.</p>
 
                         <!-- Player Mat Explanation -->
@@ -803,11 +807,11 @@
 
                 <!-- Community Resilience Goals -->
                 <div class="accordion" data-section="goals">
-                    <button class="accordion-header">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="content-goals">
                         <span>Community Resilience Goals</span>
-                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
-                    <div class="accordion-content">
+                    <div class="accordion-content" id="content-goals">
                         <div class="info-box">
                             <h4>Key Rules for Goals</h4>
                             <ul>
@@ -923,11 +927,11 @@
 
                 <!-- Trading Rules -->
                 <div class="accordion" data-section="trading">
-                    <button class="accordion-header">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="content-trading">
                         <span>Trading Rules</span>
-                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
-                    <div class="accordion-content">
+                    <div class="accordion-content" id="content-trading">
                         <ul>
                             <li>Once per turn, the active player may make one trade offer using their station's Trade Power</li>
                             <li>Consent is required - the receiving player may decline with no penalty</li>
@@ -940,11 +944,11 @@
 
                 <!-- End of Game -->
                 <div class="accordion" data-section="endgame">
-                    <button class="accordion-header">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="content-endgame">
                         <span>End of Game & Scoring</span>
-                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
-                    <div class="accordion-content">
+                    <div class="accordion-content" id="content-endgame">
                         <h4>When the Timer Expires</h4>
                         <p>The game ends when the 1-hour timer expires. This represents the end of the fiscal year.</p>
                         
@@ -968,11 +972,11 @@
 
                 <!-- Random Token Rule -->
                 <div class="accordion" data-section="d6rule">
-                    <button class="accordion-header">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="content-d6rule">
                         <span>Random Token Rule (d6)</span>
-                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
-                    <div class="accordion-content">
+                    <div class="accordion-content" id="content-d6rule">
                         <p>Some abilities let you draw a random token. Roll a 6-sided die:</p>
                         <table class="rules-table">
                             <thead>
@@ -1031,6 +1035,13 @@
         </div>
     </main>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1061,16 +1072,16 @@
                     <h4>Resources</h4>
                     <ul>
                         <li><a href="https://resiliencebydesign.com" target="_blank" rel="noopener">About the Project</a></li>
-                        <li><a href="https://resiliencebydesign.com" target="_blank" rel="noopener">Contact</a></li>
+                        <li><a href="mailto:info@resiliencebydesign.com">Contact</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Resilience by Design.</p>
+                <p>&copy; <span id="currentYear">2025</span> Resilience by Design.</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/app.js?v=1000"></script>
+    <script src="js/app.js?v=1001"></script>
 </body>
 </html>
