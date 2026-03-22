@@ -382,5 +382,5 @@ When making changes:
 
 ---
 
-*Last Updated: 2026-01-18*
-*Maintained with assistance from Claude Sonnet 4.5*
+*Last Updated: 2026-03-21*
+*Maintained with assistance from Claude Opus 4.6*
